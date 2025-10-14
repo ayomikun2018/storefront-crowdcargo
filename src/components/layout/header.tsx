@@ -17,6 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useSidebar } from "@/components/ui/sidebar";
 import { CountriesAtlas } from "@amplifiedhq/countries-atlas";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,10 +27,11 @@ const countries = CountriesAtlas.getCountries().filter((each) =>
 );
 
 const Header = () => {
+  const { toggleSidebar } = useSidebar();
   return (
     <div className="border-b border-b-gray-100">
-      <header className="max-w-7xl mx-auto p-3 mt-5 ">
-        <nav className="flex  gap-6 items-center">
+      <header className="max-w-7xl mx-auto p-3 ">
+        <nav className="flex  gap-6 items-center justify-between">
           <div className="flex gap-4 items-center">
             <div className="rounded-full p-[0.2rem] inline-block bg-gradient-to-t from-purple-500 to-primary">
               <Image
@@ -45,11 +47,9 @@ const Header = () => {
                 4.85{" "}
                 <StarIcon className="size-4 text-yellow-500 fill-yellow-500" />
               </span>
-              <h2 className="text-base font-semibold leading-5">
-                Oraimo Store
-              </h2>
+              <h2 className="text-lg leading-5">Oraimo Store</h2>
               <p className="flex gap-1 text-primary items-center">
-                <MapPinIcon className="text-gray-300 size-4" /> 37, Nnobi
+                <MapPinIcon className="text-gray-500 size-3" /> 37, Nnobi
                 street, Surulere
               </p>
             </div>
@@ -99,14 +99,18 @@ const Header = () => {
             >
               <Link href="#">Return Policy</Link>
             </Button>
-            <button type="button" className="relative">
+            <button
+              type="button"
+              className="relative cursor-pointer"
+              onClick={() => toggleSidebar()}
+            >
               <Badge
-                className="absolute -top-2 right-0 px-1 size-4 text-xs rounded-sm"
+                className="absolute -top-2 right-0 px-1 size-4 text-xs rounded-full"
                 variant="destructive"
               >
                 1
               </Badge>
-              <CartIcon className="size-7" />
+              <CartIcon className="size-7 text-primary" />
             </button>
             <UserPanel />
           </div>

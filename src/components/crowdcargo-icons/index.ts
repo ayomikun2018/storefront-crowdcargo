@@ -3,3 +3,7 @@ export { default as MapPinIcon } from "@/components/crowdcargo-icons/map-pin-ico
 export { default as StarIcon } from "@/components/crowdcargo-icons/star-icon";
 export { default as SearchIcon } from "@/components/crowdcargo-icons/search-icon";
 export { default as CartIcon } from "@/components/crowdcargo-icons/cart-icon";
+export { default as MinusCircleIcon } from "@/components/crowdcargo-icons/minus-circle-icon";
+export { default as PlusCircleIcon } from "@/components/crowdcargo-icons/plus-circle-icon";
+export { default as XCircleIcon } from "@/components/crowdcargo-icons/x-circle-icon";
+export { default as BoxIcon } from "@/components/crowdcargo-icons/box-icon";

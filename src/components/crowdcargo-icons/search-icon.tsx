@@ -12,7 +12,7 @@ function SearchIcon(props: CrowdCargoIconProps) {
     >
       <path
         d="M6.709 12.384a5.542 5.542 0 100-11.083 5.542 5.542 0 000 11.083zM12.834 12.967l-1.167-1.166"
-        stroke="#212121"
+        stroke="currentColor"
         strokeOpacity={0.7}
         strokeWidth={1.5}
         strokeLinecap="round"
