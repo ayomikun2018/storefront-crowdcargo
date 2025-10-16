@@ -13,7 +13,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -90,7 +89,6 @@ const HomePage = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuSeparator />
                 <DropdownMenuItem>Low - High</DropdownMenuItem>
                 <DropdownMenuItem>High - Low</DropdownMenuItem>
               </DropdownMenuContent>
