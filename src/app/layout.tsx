@@ -3,13 +3,17 @@ import { AppSidebar } from "@/components/layout/app-sidebar";
 import Header from "@/components/layout/header";
 import type { Metadata } from "next";
 import { athleticsFont, chillaxFont } from "../../src/lib/font";
-import "./globals.css";
+import "@/app/globals.css";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { CartSidebar } from "@/components/layout/cart-sidebar";
+import Footer from "@/components/layout/footer";
 
 export const metadata: Metadata = {
-  title: "Merchant Storefront",
-  description: "Advance store web portal",
+  title: {
+    template: "%s | Merchant Storefront",
+    default: "Merchant Storefront",
+  },
+  description: "Merchant storefront",
 };
 
 export default function RootLayout({
@@ -37,6 +41,7 @@ export default function RootLayout({
               </div>
             </div>
           </SidebarProvider>
+          <Footer />
         </Providers>
       </body>
     </html>

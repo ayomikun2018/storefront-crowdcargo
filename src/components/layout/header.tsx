@@ -35,7 +35,7 @@ const Header = () => {
           <div className="flex gap-4 items-center">
             <div className="rounded-full p-[0.2rem] inline-block bg-gradient-to-t from-purple-500 to-primary">
               <Image
-                src="https://dummyimage.com/80x80"
+                src="/assets/merchant-avatar.png"
                 alt="Merchant Avatar"
                 className="rounded-full size-16 object-cover"
                 height={80}
