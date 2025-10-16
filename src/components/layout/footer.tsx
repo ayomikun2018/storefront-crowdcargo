@@ -8,7 +8,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className=" w-full bg-[url(/assets/footer-box-bg.svg)] space-y-10 pt-8">
+    <footer className=" w-full bg-[url(/assets/footer-box-bg.svg)] space-y-10 pt-8 relative z-50 bg-white">
       <section className="mx-auto max-w-7xl flex justify-between items-center w-full px-5">
         <div className="flex gap-4 items-center">
           <div className="rounded-full p-[0.3rem] inline-block bg-gradient-to-t from-purple-500 to-primary">
