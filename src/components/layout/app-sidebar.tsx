@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const categories = [
   "Foodstuff",
@@ -26,13 +27,26 @@ const categories = [
 ];
 export function AppSidebar() {
   const { toggleSidebar, open } = useSidebar();
+  const [scrolled, setScrolled] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 70);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <div className="flex">
+    <div
+      className={`flex ${
+        open ? "w-(calc(var(--sidebar-width)+0.3rem))" : "w-[2.5rem]"
+      }`}
+    >
       <Sidebar
         className={cn(
-          "relative bg-white",
-          open ? "w-(--sidebar-width)" : "w-0"
+          " bg-white transition-all",
+          open ? "w-(--sidebar-width)" : "w-0",
+          !scrolled ? "top-24" : ""
         )}
         collapsible="offcanvas"
       >
@@ -115,7 +129,7 @@ export function AppSidebar() {
         </SidebarContent>
       </Sidebar>
       <button
-        className="h-44 rounded-r-lg pt-2 pb-5 text-gray-600 flex flex-col justify-between bg-gray-100 items-center mt-2 cursor-pointer"
+        className="h-44 rounded-r-lg pt-2 pb-5 text-gray-600 flex flex-col justify-between bg-gray-100 items-center mt-2 cursor-pointer sticky top-0"
         type="button"
         onClick={toggleSidebar}
       >

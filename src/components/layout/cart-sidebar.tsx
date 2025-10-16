@@ -21,16 +21,27 @@ import {
 import { cn, currencyFormatter } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export function CartSidebar() {
-  const { toggleSidebar, open } = useSidebar();
+  const { open } = useSidebar();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 70);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <div className="flex">
+    <div className={open ? "w-80" : "w-1"}>
       <Sidebar
         className={cn(
-          "relative border-l border-l-gray-100 bg-white",
-          open ? "w-80" : "w-0"
+          "border-l border-l-gray-100 bg-white transition-all",
+          open ? "w-80" : "w-0",
+          !scrolled ? "top-24" : ""
         )}
         side="right"
       >
