@@ -1,0 +1,28 @@
+name: Variable - App
+
+on:
+  workflow_call:
+    outputs:
+      node_version:
+        description: node version
+        value: ${{ jobs.output_variable.outputs.node_version }}
+      ui_artifact_name:
+        description: artifact name
+        value: ${{ jobs.output_variable.outputs.ui_artifact_name }}
+
+env:
+  NODE_VERSION: "20.x"
+  UI_ARTIFACT_NAME: "Merchant.Storefront"
+
+jobs:
+  output_variable:
+    runs-on: ubuntu-latest
+    outputs:
+      node_version: ${{ steps.set_outputs.outputs.node_version }}
+      ui_artifact_name: ${{ steps.set_outputs.outputs.ui_artifact_name }}
+    steps:
+      - name: Set Outputs
+        id: set_outputs
+        run: |
+          echo "node_version=${{ env.NODE_VERSION }}" >> $GITHUB_OUTPUT
+          echo "ui_artifact_name=${{ env.UI_ARTIFACT_NAME }}" >> $GITHUB_OUTPUT
