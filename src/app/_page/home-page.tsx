@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  FilterIcon,
-  MapPinIcon,
-  ShareIcon,
-} from "@/components/crowdcargo-icons";
-import EditIcon from "@/components/crowdcargo-icons/edit-icon";
+import { FilterIcon, ShareIcon } from "@/components/crowdcargo-icons";
 import HomeBannerCarousel from "@/components/home/home-banner-carousel";
 import ProductListings from "@/components/home/tabs/products/product-listings";
 import { Button } from "@/components/ui/button";

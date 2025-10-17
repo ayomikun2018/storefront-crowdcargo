@@ -7,7 +7,7 @@ import {
   PlusCircleIcon,
   XCircleIcon,
 } from "@/components/crowdcargo-icons";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
   Sidebar,

@@ -61,7 +61,6 @@ const ModalWrapper: FC<ModalWrapperProps> = ({
   hideLogo = false,
   showHeaderBorder = true,
   hideTitle = false,
-  className = "",
   trigger,
   headerFullWidth = true,
   children,

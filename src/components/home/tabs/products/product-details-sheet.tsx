@@ -72,7 +72,7 @@ const ProductDetailsSheet: FC<ProductDetailsSheetProps> = ({
             <ProductDetailsCarousel
               images={Array(5)
                 .fill(null)
-                .map((_) => "/assets/pair-trainers.svg")}
+                .map(() => "/assets/pair-trainers.svg")}
             />
             <hr className="border border-muted" />
             <div className="grid grid-cols-4">
