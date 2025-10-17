@@ -29,17 +29,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 const HomePage = () => {
   return (
     <div className="max-w-7xl p-5 mx-auto space-y-5">
-      <div>
-        <p className="text-end text-xs flex items-center justify-end gap-1 py-3">
-          <span className="inline-flex gap-1 text-gray-500 items-center">
-            <MapPinIcon className="size-4" /> Delivery Address
-          </span>
-          <span className="text-primary inline-flex gap-1 items-center">
-            37, Nnobi street, Surulere <EditIcon className="size-4" />
-          </span>
-        </p>
-        <HomeBannerCarousel />
-      </div>
+      <HomeBannerCarousel />
       <Tabs defaultValue="products" className="w-full">
         <TabsList className="bg-transparent border-b border-b-gray-200 rounded-none w-full justify-start py-1 h-auto gap-4 overflow-auto min-w-full max-w-0">
           <TabsTrigger
@@ -83,10 +73,8 @@ const HomePage = () => {
               </SelectContent>
             </Select>
             <DropdownMenu>
-              <DropdownMenuTrigger>
-                <Button className="flex gap-2 items-center border !bg-white text-gray-500 cursor-pointer h-8">
-                  Filter <FilterIcon className="size-4" />
-                </Button>
+              <DropdownMenuTrigger className="flex gap-2 items-center border !bg-white text-gray-500 cursor-pointer h-8 px-2 py-1 rounded-lg text-sm">
+                Filter <FilterIcon className="size-3.5" />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem>Low - High</DropdownMenuItem>

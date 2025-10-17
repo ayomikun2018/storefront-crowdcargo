@@ -39,7 +39,7 @@ export function AppSidebar() {
   return (
     <div
       className={`flex ${
-        open ? "w-(calc(var(--sidebar-width)+0.3rem))" : "w-[2.5rem]"
+        open ? "w-[calc(var(--sidebar-width)+1.8rem)]" : "w-[2.5rem]"
       }`}
     >
       <Sidebar
@@ -67,21 +67,21 @@ export function AppSidebar() {
               <SidebarMenu>
                 <SidebarMenuItem>
                   <RadioGroup>
-                    <div className="flex items-center gap-3 bg-green-50 p-2 px-3 rounded-lg text-lg">
+                    <div className="flex items-center gap-3 bg-primary/5 p-2 px-3 rounded-lg text-lg">
                       <RadioGroupItem
                         value="low-to-high"
                         id="r1"
-                        className="border-4 border-blue-100 p-1.5"
+                        className="border-4 border-blue-100 p-1"
                       />
                       <Label htmlFor="r1" className="flex-grow">
                         Low - High
                       </Label>
                     </div>
-                    <div className="flex items-center gap-3 bg-green-50 p-2 px-3 rounded-lg text-lg">
+                    <div className="flex items-center gap-3 bg-primary/5 p-2 px-3 rounded-lg text-lg">
                       <RadioGroupItem
                         value="high-to-low"
                         id="r2"
-                        className="border-4 border-blue-100 p-1.5"
+                        className="border-4 border-blue-100 p-1"
                       />
                       <Label htmlFor="r2" className="flex-grow">
                         High - Low
@@ -105,13 +105,13 @@ export function AppSidebar() {
                   <RadioGroup className="gap-1">
                     {categories.map((each, index) => (
                       <div
-                        className="flex items-center gap-3 bg-green-50 p-2 px-3 rounded-lg text-lg"
+                        className="flex items-center gap-3 bg-primary/5 p-2 px-3 rounded-lg text-lg"
                         key={index}
                       >
                         <RadioGroupItem
                           value={each}
                           id={`category-${index}`}
-                          className="border-4 border-blue-100 p-1.5"
+                          className="border-4 border-blue-100 p-1"
                         />
                         <Label
                           htmlFor={`category-${index}`}
@@ -129,7 +129,11 @@ export function AppSidebar() {
         </SidebarContent>
       </Sidebar>
       <button
-        className="h-44 rounded-r-lg pt-2 pb-5 text-gray-600 flex flex-col justify-between bg-gray-100 items-center mt-2 cursor-pointer sticky top-0"
+        className={cn(
+          "h-44 rounded-r-lg pt-2 pb-5 text-gray-600 flex flex-col justify-between bg-gray-100 items-center mt-2 cursor-pointer transition-all  duration-300",
+          scrolled && "fixed top-0 left-(--sidebar-width)",
+          !open && "left-0"
+        )}
         type="button"
         onClick={toggleSidebar}
       >
