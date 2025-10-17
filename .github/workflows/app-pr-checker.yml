@@ -1,0 +1,20 @@
+
+name: App PR Checker
+
+on:
+  pull_request:
+    branches: [ "pre-main", "main" ]
+  workflow_dispatch:
+
+jobs:
+  variable:
+    uses: ./.github/workflows/app-variable.yml
+    secrets: inherit
+  
+  app:
+    needs: [ variable ]
+    uses:  ./.github/workflows/app-build-react.yml
+    secrets: inherit
+    with:
+      node_version: ${{ needs.variable.outputs.node_version }}
+      artifact_name: ${{ needs.variable.outputs.ui_artifact_name }}
