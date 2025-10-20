@@ -1,0 +1,206 @@
+"use client";
+import { MinusCircleIcon, PlusCircleIcon } from "@/components/crowdcargo-icons";
+import ProductDetailsCarousel from "@/components/home/tabs/products/product-details-carousel";
+import ProductDetailsReviews from "@/components/home/tabs/products/product-details-reviews";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { currencyFormatter } from "@/lib/utils";
+import React, { FC, ReactNode } from "react";
+
+interface ProductDetailsSheetProps {
+  trigger: ReactNode;
+  product: {
+    name: string;
+    discount: { rate: number; originalAmount: number };
+    price: number;
+  };
+}
+
+const colors = ["Red", "Blue", "Yellow", "Green"];
+const sizes = ["S", "L", "XL", "XXL"];
+
+const ProductDetailsSheet: FC<ProductDetailsSheetProps> = ({
+  trigger,
+  product,
+}) => {
+  const ACCORDION_CLASS =
+    "[&>svg]:hidden [&[data-state=open]>svg.plus]:hidden [&[data-state=open]>svg.minus]:inline-block [&[data-state=closed]>svg.plus]:inline-block [&[data-state=closed]>svg.minus]:hidden group cursor-pointer";
+  return (
+    <Sheet>
+      <SheetTrigger asChild>{trigger}</SheetTrigger>
+      <SheetContent className="sm:max-w-md">
+        <div>
+          <SheetHeader className="space-y-2 pb-0">
+            <SheetTitle className="text-2xl font-semibold">
+              <div className="space-y-2 max-w-4/5">
+                <p className="text-sm text-gray-600 font-light">
+                  Oraimo Store / Food
+                </p>
+                <p className="leading-6">{product?.name}</p>
+                <p className="text-primary">
+                  {currencyFormatter(product?.price)}
+                </p>
+              </div>
+            </SheetTitle>
+            <SheetDescription className="text-foreground" asChild>
+              <p className="flex gap-4">
+                In Stock:{" "}
+                <span className="text-destructive">Only 5 Left Buy Now</span>
+              </p>
+            </SheetDescription>
+          </SheetHeader>
+          <hr className="border border-muted" />
+        </div>
+        <ScrollArea className="px-4 max-h-[75vh] pb-12">
+          <div className="space-y-4 ">
+            <ProductDetailsCarousel
+              images={Array(5)
+                .fill(null)
+                .map(() => "/assets/pair-trainers.svg")}
+            />
+            <hr className="border border-muted" />
+            <div className="grid grid-cols-4">
+              <button className="bg-gray-100 hover:bg-gray-200 flex justify-between items-center px-2 py-0.5 pr-0 rounded-l-lg cursor-pointer text-gray-300 hover:text-gray-200">
+                <MinusCircleIcon className="text-primary size-5" />
+                <span className="text-lg">|</span>
+              </button>
+              <span className="col-span-2 px-2 py-0.5 flex items-center justify-center  bg-gray-100">
+                8
+              </span>
+              <button className="bg-gray-100 hover:bg-gray-200 flex justify-between items-center px-2 py-0.5 pl-0 rounded-r-lg cursor-pointer text-gray-300 hover:text-gray-200">
+                <span className="text-lg">|</span>
+                <PlusCircleIcon className="text-primary size-5" />
+              </button>
+            </div>
+            <hr className="border border-muted" />
+            <div className="space-y-2">
+              <p className="text-sm text-gray-500">Product Colors</p>
+              <RadioGroup
+                className="flex flex-row gap-4 flex-wrap"
+                defaultValue={colors[0]}
+              >
+                {colors.map((each, index) => (
+                  <div
+                    className="flex items-center gap-3 bg-primary/5 p-2 px-3 rounded-lg text-lg"
+                    key={index}
+                  >
+                    <RadioGroupItem
+                      value={each}
+                      id={`r-${each}`}
+                      className="border-4 border-blue-100 p-1"
+                    />
+                    <Label htmlFor={`r-${each}`} className="flex-grow">
+                      {each}
+                    </Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </div>
+            <hr className="border border-muted" />
+            <div className="space-y-2">
+              <p className="text-sm text-gray-500">Product Sizes</p>
+              <RadioGroup
+                className="flex flex-row gap-4 flex-wrap"
+                defaultValue={sizes[0]}
+              >
+                {sizes.map((each, index) => (
+                  <div
+                    className="flex items-center gap-3 bg-primary/5 p-2 px-3 rounded-lg text-lg"
+                    key={index}
+                  >
+                    <RadioGroupItem
+                      value={each}
+                      id={`r-${each}`}
+                      className="border-4 border-blue-100 p-1"
+                    />
+                    <Label htmlFor={`r-${each}`} className="flex-grow">
+                      {each}
+                    </Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </div>
+            <hr className="border border-muted" />
+            <Button className="flex gap-2 w-full h-12">
+              <PlusCircleIcon className="size-5" />
+              Add to Cart
+            </Button>
+
+            <Accordion
+              type="single"
+              collapsible
+              className="w-full"
+              defaultValue="product-information"
+            >
+              <AccordionItem value="product-information">
+                <AccordionTrigger className={ACCORDION_CLASS}>
+                  <span className="text-gray-600">Product Information</span>
+                  <MinusCircleIcon className="size-4 minus" />
+                  <PlusCircleIcon className="size-4 plus" />
+                </AccordionTrigger>
+                <AccordionContent className="flex flex-col gap-4 text-balance">
+                  <p>
+                    Our flagship product combines cutting-edge technology with
+                    sleek design. Built with premium materials, it offers
+                    unparalleled performance and reliability.
+                  </p>
+                  <p>
+                    Key features include advanced processing capabilities, and
+                    an intuitive user interface designed for both beginners and
+                    experts.
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="vendors-info">
+                <AccordionTrigger className={ACCORDION_CLASS}>
+                  <span className="text-gray-600">Vendors Info</span>
+                  <MinusCircleIcon className="size-4 minus" />
+                  <PlusCircleIcon className="size-4 plus" />
+                </AccordionTrigger>
+                <AccordionContent className="flex flex-col gap-4 text-balance">
+                  <ul className="list-disc pl-5 text-xs text-gray-500">
+                    <li>This vendor is based in Lagos</li>
+
+                    <li>Delivers in Lagos within 48 hours</li>
+
+                    <li>Delivers nationwide 2-5 working days</li>
+
+                    <li>This vendor do return policy.</li>
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="ratings-and-reviews">
+                <AccordionTrigger className={ACCORDION_CLASS}>
+                  <span className="text-gray-600">Ratings & Reviews</span>
+                  <MinusCircleIcon className="size-4 minus" />
+                  <PlusCircleIcon className="size-4 plus" />
+                </AccordionTrigger>
+                <AccordionContent className="flex flex-col gap-4 text-balance">
+                  <ProductDetailsReviews />
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        </ScrollArea>
+      </SheetContent>
+    </Sheet>
+  );
+};
+
+export default ProductDetailsSheet;

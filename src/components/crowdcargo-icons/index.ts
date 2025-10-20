@@ -1,12 +1,14 @@
 export { default as BoxIcon } from "@/components/crowdcargo-icons/box-icon";
 export { default as CarIcon } from "@/components/crowdcargo-icons/car-icon";
 export { default as CartIcon } from "@/components/crowdcargo-icons/cart-icon";
+export { default as ExpandIcon } from "@/components/crowdcargo-icons/expand-icon";
 export { default as FilterIcon } from "@/components/crowdcargo-icons/filter-icon";
 export { default as FlagIcon } from "@/components/crowdcargo-icons/flag-icon";
 export { default as HeadsetIcon } from "@/components/crowdcargo-icons/headset-icon";
 export { default as HeartIcon } from "@/components/crowdcargo-icons/heart-icon";
 export { default as JudgeIcon } from "@/components/crowdcargo-icons/judge-icon";
 export { default as MapPinIcon } from "@/components/crowdcargo-icons/map-pin-icon";
+export { default as MessageTextIcon } from "@/components/crowdcargo-icons/message-text-icon";
 export { default as MinusCircleIcon } from "@/components/crowdcargo-icons/minus-circle-icon";
 export { default as PlusCircleIcon } from "@/components/crowdcargo-icons/plus-circle-icon";
 export { default as PriceTagIcon } from "@/components/crowdcargo-icons/price-tag-icon";

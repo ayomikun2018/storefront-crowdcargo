@@ -5,18 +5,19 @@ import React from "react";
 const ProductListings = () => {
   return (
     <div className="space-y-14">
-      <div className="py-5 grid gap-5 grid-cols-[repeat(auto-fit,minmax(250px,1fr))]">
+      <div className="py-5 grid gap-6 grid-cols-[repeat(auto-fit,minmax(230px,1fr))]">
         {Array(9)
           .fill(null)
           .map((_, index) => (
-            <ProductListingCard
-              key={index}
-              product={{
-                name: "Ramen Noodles from Japan and India",
-                discount: { rate: 15, originalAmount: 12000 },
-                price: 6000,
-              }}
-            />
+            <div key={index}>
+              <ProductListingCard
+                product={{
+                  name: "Ramen Noodles from Japan and India",
+                  discount: { rate: 15, originalAmount: 12000 },
+                  price: 6000,
+                }}
+              />
+            </div>
           ))}
       </div>
       <div className="flex justify-center">

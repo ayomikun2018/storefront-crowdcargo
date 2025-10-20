@@ -1,5 +1,4 @@
 "use client";
-import { SidebarProvider } from "@/components/ui/sidebar";
 import type { FC, ReactNode } from "react";
 
 interface ProvidersProps {
@@ -7,11 +6,6 @@ interface ProvidersProps {
 }
 
 const Providers: FC<ProvidersProps> = ({ children }) => {
-  return (
-    <>
-      {/* <SidebarProvider>{children};</SidebarProvider> */}
-      {children}
-    </>
-  );
+  return <>{children}</>;
 };
 export default Providers;
