@@ -6,7 +6,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
-import { Lock } from "lucide-react";
 
 import Image from "next/image";
 import type { FC, ReactNode } from "react";
@@ -14,11 +13,10 @@ import type { FC, ReactNode } from "react";
 export interface BaseModalProps {
   isOpen?: boolean;
   setIsOpen?: (isOpen: boolean) => void;
+  trigger?: ReactNode;
 }
 
 interface ModalWrapperProps {
-  isOpen?: boolean;
-  isLock?: boolean;
   size?:
     | "xs"
     | "sm"
@@ -33,34 +31,28 @@ interface ModalWrapperProps {
   setIsOpen?: (value: boolean) => void;
   onOpenChange?: (value: boolean) => void;
   type?: "danger" | "success" | "info" | "warning";
-  className?:
-    | string
-    | "center"
-    | "auto"
-    | "top"
-    | "top-center"
-    | "bottom"
-    | "bottom-center";
   hideLogo?: boolean;
   hideTitle?: boolean;
+  hideCloseButton?: boolean;
+  className?: string;
   headerFullWidth?: boolean;
   showHeaderBorder?: boolean;
   lightBg?: boolean;
   children: ReactNode;
-  trigger?: ReactNode;
   title?: ReactNode;
   logo?: ReactNode;
   footer?: ReactNode;
 }
 
-const ModalWrapper: FC<ModalWrapperProps> = ({
+const ModalWrapper: FC<BaseModalProps & ModalWrapperProps> = ({
   isOpen,
   onOpenChange = () => null,
   setIsOpen,
-  isLock = false,
   hideLogo = false,
+  hideCloseButton = false,
   showHeaderBorder = true,
   hideTitle = false,
+  className = "",
   trigger,
   headerFullWidth = true,
   children,
@@ -87,7 +79,7 @@ const ModalWrapper: FC<ModalWrapperProps> = ({
       >
         <DialogTrigger asChild>{trigger}</DialogTrigger>
 
-        <DialogContent>
+        <DialogContent className={className} showCloseButton={!hideCloseButton}>
           <>
             <DialogTitle
               className={cn(
@@ -102,15 +94,12 @@ const ModalWrapper: FC<ModalWrapperProps> = ({
                   headerFullWidth ? "flex-grow" : ""
                 }`}
               >
-                {!hideLogo && (isLock ? <Lock /> : logo)}
                 {title}
               </span>
             </DialogTitle>
 
             <div
-              className={`py-3 max-h-[70vh] overflow-auto ${
-                hideTitle ? "pt-7 pb-2" : ""
-              }`}
+              className={`py-3  overflow-auto ${hideTitle ? "pt-7 pb-2" : ""}`}
             >
               {children}
             </div>

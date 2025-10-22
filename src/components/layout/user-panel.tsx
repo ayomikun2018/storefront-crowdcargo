@@ -17,7 +17,7 @@ const UserPanel = () => {
       <DropdownMenuTrigger className="flex gap-2 items-center">
         <UserIcon size={20} /> <ChevronDown size={20} />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="p-2 space-y-1">
+      <DropdownMenuContent className="p-2 space-y-1 mr-2">
         <DropdownMenuLabel className="p-2 bg-gray-100 flex gap-2 rounded-lg items-center">
           <Image
             src="/assets/user-avatar.png"

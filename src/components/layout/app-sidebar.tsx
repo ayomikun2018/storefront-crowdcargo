@@ -17,6 +17,7 @@ import {
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { footerHeight } from "@/components/layout/footer";
 
 const categories = [
   "Foodstuff",
@@ -30,23 +31,37 @@ export function AppSidebar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 70);
-    };
+    function handleScroll() {
+      const offset = footerHeight;
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+
+      // Distance from bottom
+      const distanceFromBottom = docHeight - (scrollTop + windowHeight);
+      const isScrolled = distanceFromBottom <= offset;
+
+      setScrolled(isScrolled);
+    }
+
     window.addEventListener("scroll", handleScroll);
+
+    // Run once in case page is already short
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
     <div
-      className={`flex ${
+      className={` flex min-h-screen h-ful ${
         open ? "w-[calc(var(--sidebar-width)+1.8rem)]" : "w-[2.5rem]"
       }`}
     >
       <Sidebar
         className={cn(
-          " bg-white transition-all",
+          "bg-white transition-all h-[calc(100vh-88px])]",
           open ? "w-(--sidebar-width)" : "w-0",
-          !scrolled ? "top-24" : ""
+          scrolled ? "bottom-[217.594px]" : "top-24"
         )}
         collapsible="offcanvas"
       >
@@ -130,8 +145,8 @@ export function AppSidebar() {
       </Sidebar>
       <button
         className={cn(
-          "h-44 rounded-r-lg pt-2 pb-5 text-gray-600 flex flex-col justify-between bg-gray-100 items-center mt-2 cursor-pointer transition-all  duration-300",
-          scrolled && "fixed top-0 left-(--sidebar-width)",
+          "fixed top-28 left-(--sidebar-width) h-44 rounded-r-lg pt-2 pb-5 text-gray-600 flex flex-col justify-between bg-gray-100 items-center mt-2 cursor-pointer transition-all  duration-300",
+
           !open && "left-0"
         )}
         type="button"

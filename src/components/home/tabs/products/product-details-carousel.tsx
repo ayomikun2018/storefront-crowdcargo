@@ -38,7 +38,7 @@ const ProductDetailsCarousel: FC<ProductDetailsCarouselProps> = ({
     });
   }, [api]);
   return (
-    <div className="grid grid-cols-5 h-80 gap-2">
+    <div className="grid grid-cols-5 h-64 gap-2">
       <div className="col-span-4">
         <Carousel
           setApi={setApi}
@@ -54,31 +54,34 @@ const ProductDetailsCarousel: FC<ProductDetailsCarouselProps> = ({
                   alt={`product image ${1}`}
                   height={400}
                   width={400}
-                  className="border border-gray-300 rounded-lg object-full w-full h-80 object-center"
+                  className="border border-gray-300 rounded-lg object-full w-full h-64 object-center"
                 />
               </CarouselItem>
             ))}
           </CarouselContent>
           <ModalWrapper
             hideTitle
+            className="!max-w-screen h-screen"
             trigger={
               <Button className="absolute bottom-2 right-2 !bg-gray-100 border border-gray-300 !p-1.5 h-6 text-foreground cursor-pointer">
                 <ExpandIcon className="size-4" />
               </Button>
             }
           >
-            <Image
-              src={images[current]}
-              alt="review images"
-              className=" object-cover rounded-lg size-[400px] "
-              height={100}
-              width={100}
-            />
+            <div className="w-full max-h-full">
+              <Image
+                src={images[current]}
+                alt="review images"
+                className="object-contain rounded-lg w-full h-full"
+                height={100}
+                width={100}
+              />
+            </div>
           </ModalWrapper>
         </Carousel>
       </div>
       <div className="flex flex-col gap-2">
-        <ScrollArea className="flex flex-col items-baseline gap-3 max-h-[17.5rem] overflow-y-auto">
+        <ScrollArea className="flex flex-col items-baseline gap-3 max-h-[13.5rem] overflow-y-auto">
           {images.map((each, index) => (
             <button
               key={index}
@@ -91,16 +94,16 @@ const ProductDetailsCarousel: FC<ProductDetailsCarouselProps> = ({
             >
               <Image
                 src={each}
-                alt={`product image ${1}`}
+                alt={`product image ${index}`}
                 height={100}
                 width={100}
-                className="w-full h-20 object-full object-center"
+                className="w-full h-16 object-full object-contain"
               />
             </button>
           ))}
         </ScrollArea>
-        <Button className="gap-2 h-8">
-          <ShareIcon className="size-4" />
+        <Button className="gap-1 h-8">
+          <ShareIcon className="size-3.5" />
           Share
         </Button>
       </div>

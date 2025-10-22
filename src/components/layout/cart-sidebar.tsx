@@ -7,6 +7,7 @@ import {
   PlusCircleIcon,
   XCircleIcon,
 } from "@/components/crowdcargo-icons";
+import { footerHeight } from "@/components/layout/footer";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
@@ -28,10 +29,24 @@ export function CartSidebar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 70);
-    };
+    function handleScroll() {
+      const offset = footerHeight;
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+
+      // Distance from bottom
+      const distanceFromBottom = docHeight - (scrollTop + windowHeight);
+      const isScrolled = distanceFromBottom <= offset;
+
+      setScrolled(isScrolled);
+    }
+
     window.addEventListener("scroll", handleScroll);
+
+    // Run once in case page is already short
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -39,9 +54,9 @@ export function CartSidebar() {
     <div className={open ? "w-80" : "w-1"}>
       <Sidebar
         className={cn(
-          "border-l border-l-gray-100 bg-white transition-all",
+          "border-l border-l-gray-100 bg-white transition-all top-24 h-[calc(100vh-88px])]",
           open ? "w-80" : "w-0",
-          !scrolled ? "top-24" : ""
+          scrolled ? "bottom-[217.594px]" : "top-24"
         )}
         side="right"
       >
@@ -51,14 +66,14 @@ export function CartSidebar() {
         <hr className="mx-2" />
         <SidebarContent className="bg-white p-2 pr-0">
           <SidebarMenu className="space-y-3 divide-y divide-y-gray-100">
-            {Array(4)
+            {Array(6)
               .fill(null)
               .map((_, index) => (
                 <SidebarMenuItem key={index}>
                   <div className="flex gap-2 text-xs p-2">
                     <div className="relative w-auto">
                       <button type="button" className="absolute -top-2 -left-2">
-                        <XCircleIcon className="size-5" />
+                        <XCircleIcon className="size-5 text-destructive" />
                       </button>
                       <Image
                         src="/assets/pair-trainers.svg"
