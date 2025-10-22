@@ -1,6 +1,9 @@
+export { default as ArrowRightIcon } from "@/components/crowdcargo-icons/arrow-right-icon";
 export { default as BoxIcon } from "@/components/crowdcargo-icons/box-icon";
 export { default as CarIcon } from "@/components/crowdcargo-icons/car-icon";
 export { default as CartIcon } from "@/components/crowdcargo-icons/cart-icon";
+export { default as ClockIcon } from "@/components/crowdcargo-icons/clock-icon";
+export { default as CopyIcon } from "@/components/crowdcargo-icons/copy-icon";
 export { default as ExpandIcon } from "@/components/crowdcargo-icons/expand-icon";
 export { default as FilterIcon } from "@/components/crowdcargo-icons/filter-icon";
 export { default as FlagIcon } from "@/components/crowdcargo-icons/flag-icon";
@@ -16,4 +19,5 @@ export { default as SearchIcon } from "@/components/crowdcargo-icons/search-icon
 export { default as ShareIcon } from "@/components/crowdcargo-icons/share-icon";
 export { default as StarIcon } from "@/components/crowdcargo-icons/star-icon";
 export { default as StoreIcon } from "@/components/crowdcargo-icons/store-icon";
+export { default as TruckIcon } from "@/components/crowdcargo-icons/truck-icon";
 export { default as XCircleIcon } from "@/components/crowdcargo-icons/x-circle-icon";

@@ -18,13 +18,13 @@ import {
   SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
 } from "@/components/ui/sheet";
 import { currencyFormatter } from "@/lib/utils";
-import React, { FC, ReactNode } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 
 interface ProductDetailsSheetProps {
-  trigger: ReactNode;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  isOpen: boolean;
   product: {
     name: string;
     discount: { rate: number; originalAmount: number };
@@ -36,19 +36,19 @@ const colors = ["Red", "Blue", "Yellow", "Green"];
 const sizes = ["S", "L", "XL", "XXL"];
 
 const ProductDetailsSheet: FC<ProductDetailsSheetProps> = ({
-  trigger,
+  isOpen,
+  setIsOpen,
   product,
 }) => {
   const ACCORDION_CLASS =
     "[&>svg]:hidden [&[data-state=open]>svg.plus]:hidden [&[data-state=open]>svg.minus]:inline-block [&[data-state=closed]>svg.plus]:inline-block [&[data-state=closed]>svg.minus]:hidden group cursor-pointer";
   return (
-    <Sheet>
-      <SheetTrigger asChild>{trigger}</SheetTrigger>
-      <SheetContent className="sm:max-w-md">
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+      <SheetContent className="">
         <div>
-          <SheetHeader className="space-y-2 pb-0">
-            <SheetTitle className="text-2xl font-semibold">
-              <div className="space-y-2 max-w-4/5">
+          <SheetHeader className="space-y-1 pb-0 gap-0">
+            <SheetTitle className="text-xl font-semibold">
+              <div className="space-y-0.5 max-w-4/5">
                 <p className="text-sm text-gray-600 font-light">
                   Oraimo Store / Food
                 </p>
@@ -67,7 +67,7 @@ const ProductDetailsSheet: FC<ProductDetailsSheetProps> = ({
           </SheetHeader>
           <hr className="border border-muted" />
         </div>
-        <ScrollArea className="px-4 max-h-[75vh] pb-12">
+        <ScrollArea className="px-4 max-h-[calc(100vh-140px)] pb-20 relative">
           <div className="space-y-4 ">
             <ProductDetailsCarousel
               images={Array(5)
@@ -137,7 +137,7 @@ const ProductDetailsSheet: FC<ProductDetailsSheetProps> = ({
               </RadioGroup>
             </div>
             <hr className="border border-muted" />
-            <Button className="flex gap-2 w-full h-12">
+            <Button className="flex gap-2 w-[22rem] h-12 fixed bottom-0">
               <PlusCircleIcon className="size-5" />
               Add to Cart
             </Button>
@@ -155,7 +155,7 @@ const ProductDetailsSheet: FC<ProductDetailsSheetProps> = ({
                   <PlusCircleIcon className="size-4 plus" />
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-4 text-balance">
-                  <p>
+                  {/* <p>
                     Our flagship product combines cutting-edge technology with
                     sleek design. Built with premium materials, it offers
                     unparalleled performance and reliability.
@@ -164,7 +164,10 @@ const ProductDetailsSheet: FC<ProductDetailsSheetProps> = ({
                     Key features include advanced processing capabilities, and
                     an intuitive user interface designed for both beginners and
                     experts.
-                  </p>
+                  </p> */}
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Excepturi deserunt ratione quos, eum incidunt non quibusdam
+                  optio labore, asperiores, et adipisci. Non, vitae id?
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="vendors-info">

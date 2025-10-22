@@ -3,16 +3,19 @@ import * as React from "react";
 function HeartIcon(props: CrowdCargoIconProps) {
   return (
     <svg
-      width={24}
-      height={25}
-      viewBox="0 0 24 25"
+      width={20}
+      height={20}
+      viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <path
-        d="M12.62 21.788c-.34.12-.9.12-1.24 0-2.9-.99-9.38-5.12-9.38-12.12 0-3.09 2.49-5.59 5.56-5.59 1.82 0 3.43.88 4.44 2.24a5.53 5.53 0 014.44-2.24c3.07 0 5.56 2.5 5.56 5.59 0 7-6.48 11.13-9.38 12.12z"
-        fill="#F04438"
+        d="M10.517 17.34c-.284.1-.75.1-1.034 0-2.417-.825-7.817-4.266-7.817-10.1 0-2.575 2.075-4.658 4.634-4.658 1.516 0 2.858.733 3.7 1.867a4.608 4.608 0 013.7-1.867c2.558 0 4.633 2.083 4.633 4.658 0 5.834-5.4 9.275-7.816 10.1z"
+        stroke="currentColor"
+        strokeWidth={1.25}
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

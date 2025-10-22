@@ -54,6 +54,7 @@ const ProductDetailsReviews = () => {
                   <div className="flex gap-2">
                     <ModalWrapper
                       hideTitle
+                      className="!max-w-screen h-screen"
                       trigger={
                         <Image
                           src="https://dummyimage.com/100x100"
@@ -64,13 +65,15 @@ const ProductDetailsReviews = () => {
                         />
                       }
                     >
-                      <Image
-                        src="https://dummyimage.com/700x500"
-                        alt="review images"
-                        className="size-16 object-cover rounded-lg w-[700px] h-[500px]"
-                        height={100}
-                        width={100}
-                      />
+                      <div className="w-full max-h-full">
+                        <Image
+                          src="https://dummyimage.com/1000x800"
+                          alt="review images"
+                          className="object-cover rounded-lg size-full"
+                          height={100}
+                          width={100}
+                        />
+                      </div>
                     </ModalWrapper>
                   </div>
                   <div className="flex justify-between">

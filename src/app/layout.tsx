@@ -28,16 +28,18 @@ export default function RootLayout({
       >
         <Providers>
           <SidebarProvider>
-            <div className="w-full overflow-x-hidden">
+            <div className="w-full">
               <Header />
-              <div className="flex">
+              <div className="flex relative">
                 <div>
                   <SidebarProvider>
                     <AppSidebar />
                   </SidebarProvider>
                 </div>
                 <main className="flex-grow">{children}</main>
-                <CartSidebar />
+                <div>
+                  <CartSidebar />
+                </div>
               </div>
             </div>
           </SidebarProvider>

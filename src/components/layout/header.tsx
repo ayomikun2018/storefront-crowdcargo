@@ -6,9 +6,16 @@ import {
   SearchIcon,
   StarIcon,
 } from "@/components/crowdcargo-icons";
+import SearchStore from "@/components/layout/search-store";
 import UserPanel from "@/components/layout/user-panel";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -29,18 +36,20 @@ const countries = CountriesAtlas.getCountries().filter((each) =>
 const Header = () => {
   const { toggleSidebar } = useSidebar();
   return (
-    <div className="border-b border-b-gray-100">
-      <header className="max-w-7xl mx-auto p-3 ">
+    <div className="sticky top-0 border-b border-b-gray-100 z-30 bg-background">
+      <header className="container mx-auto p-3">
         <nav className="flex  gap-6 items-center justify-between">
           <div className="flex gap-4 items-center">
             <div className="rounded-full p-[0.2rem] inline-block bg-gradient-to-t from-purple-500 to-primary">
-              <Image
-                src="/assets/merchant-avatar.png"
-                alt="Merchant Avatar"
-                className="rounded-full size-16 object-cover"
-                height={80}
-                width={80}
-              />
+              <div className="h-16 w-16 rounded-full ">
+                <Image
+                  src="/assets/merchant-avatar.png"
+                  alt="Merchant Avatar"
+                  className="rounded-full size-full object-cover"
+                  height={80}
+                  width={80}
+                />
+              </div>
             </div>
             <div className="space-y-0.5 text-xs">
               <span className="px-1.5 py-0.5 rounded-md bg-indigo-50 inline-flex gap-2 items-center">
@@ -55,17 +64,12 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="w-3/6 flex gap-5">
-            <div className="relative w-full">
-              <SearchIcon className="absolute inset-y-3.5 left-3 size-4" />
-              <Input
-                placeholder="Search"
-                type="text"
-                className="w-full h-11 py-3 rounded-3xl outline-none pl-9 bg-gray-100 text-foreground"
-              />
-            </div>
+          <div className="w-[45%] flex gap-5">
+            <SearchStore />
+          </div>
+          <div className="flex gap-4 items-center">
             <Select defaultValue="NG">
-              <SelectTrigger className="p-2 rounded-md border !h-11 w-36">
+              <SelectTrigger className="p-2 rounded-md border !h-11 w-28">
                 <SelectValue placeholder="Select Country" />
               </SelectTrigger>
               <SelectContent>
@@ -83,8 +87,6 @@ const Header = () => {
                 ))}
               </SelectContent>
             </Select>
-          </div>
-          <div className="flex gap-4 items-center">
             <Button
               className="text-white rounded-2xl flex gap-2 bg-green-600 hover:bg-initial"
               asChild
