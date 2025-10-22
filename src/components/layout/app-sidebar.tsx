@@ -145,7 +145,7 @@ export function AppSidebar() {
       </Sidebar>
       <button
         className={cn(
-          "fixed top-28 left-(--sidebar-width) h-44 rounded-r-lg pt-2 pb-5 text-gray-600 flex flex-col justify-between bg-gray-100 items-center mt-2 cursor-pointer transition-all  duration-300",
+          "fixed top-[6.7rem] left-(--sidebar-width) h-44 rounded-r-lg pt-2 pb-5 text-gray-600 flex flex-col justify-between bg-gray-100 items-center mt-2 cursor-pointer transition-all  duration-300",
 
           !open && "left-0"
         )}

@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 const StoreInformation = () => {
   return (
     <>
-      <div className="bg-secondary p-5 border-8 border-primary bg-[url(/assets/icon-collage.svg)] bg-no-repeat bg-top-right">
+      <div className="bg-secondary p-5 border-8 border-primary bg-[url(/assets/icon-collage.svg)] bg-no-repeat bg-right">
         <div className="space-y-4 w-4/5">
           <div className="rounded-lg bg-gradient-to-r from-primary via-60% to-blue-500 text-white">
             <div className="p-4 bg-[url(/assets/hand-with-light-bulb.svg)] bg-no-repeat bg-right space-y-3">
@@ -19,9 +19,9 @@ const StoreInformation = () => {
           </div>
 
           <div className="p-2 bg-indigo-900/30 flex gap-4 justify-between">
-            <div className="flex gap-3 items-center text-gray-500 ">
-              <span className="uppercase text-xs ">Delivery Schedule</span>
-              <hr className="w-full max-w-48 border-gray-700" />
+            <div className="flex gap-3 items-center text-gray-500 flex-1">
+              <span className="uppercase text-xs block">Delivery Schedule</span>
+              <hr className="flex-grow border-gray-700" />
             </div>
             <div className="space-y-3">
               <Badge className="w-full justify-start flex gap-2 text-xs">
