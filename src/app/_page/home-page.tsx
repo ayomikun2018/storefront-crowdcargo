@@ -24,7 +24,11 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-const HomePage = ({ searchParams }: { searchParams: { search: string } }) => {
+const HomePage = ({
+  searchParams,
+}: {
+  searchParams: Record<string, string | undefined>;
+}) => {
   const { search } = searchParams;
   const TAB_CLASS =
     "text-xs text-gray-600 data-[state=active]:border-b-2 data-[state=active]:border-b-primary data-[state=active]:text-foreground rounded-none !bg-transparent flex-none !shadow-none cursor-pointer px-0 uppercase";
