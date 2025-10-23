@@ -14,10 +14,9 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import useFooterIntersect from "@/hooks/use-footer-intersect";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { footerHeight } from "@/components/layout/footer";
 
 const categories = [
   "Foodstuff",
@@ -28,29 +27,8 @@ const categories = [
 ];
 export function AppSidebar() {
   const { toggleSidebar, open } = useSidebar();
-  const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    function handleScroll() {
-      const offset = footerHeight;
-      const scrollTop = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const docHeight = document.documentElement.scrollHeight;
-
-      // Distance from bottom
-      const distanceFromBottom = docHeight - (scrollTop + windowHeight);
-      const isScrolled = distanceFromBottom <= offset;
-
-      setScrolled(isScrolled);
-    }
-
-    window.addEventListener("scroll", handleScroll);
-
-    // Run once in case page is already short
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { intersectionData } = useFooterIntersect();
   return (
     <div
       className={` flex min-h-screen h-ful ${
@@ -59,11 +37,11 @@ export function AppSidebar() {
     >
       <Sidebar
         className={cn(
-          "bg-white transition-all h-[calc(100vh-88px])]",
-          open ? "w-(--sidebar-width)" : "w-0",
-          scrolled ? "bottom-[217.594px]" : "top-24"
+          "bg-white transition-all top-24 h-[calc(100vh-88px])]",
+          open ? "w-(--sidebar-width)" : "w-0"
         )}
         collapsible="offcanvas"
+        style={{ bottom: `${intersectionData.pixelsVisible}px` }}
       >
         <SidebarContent className="bg-white gap-3 px-2">
           <div className="py-4">

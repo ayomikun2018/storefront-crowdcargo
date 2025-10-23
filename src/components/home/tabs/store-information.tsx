@@ -1,12 +1,16 @@
+"use client";
 import { ClockIcon, TruckIcon } from "@/components/crowdcargo-icons";
 import { Badge } from "@/components/ui/badge";
+import useIsFlexWrapped from "@/hooks/use-is-flex-wrapped";
+import { cn } from "@/lib/utils";
 
 const StoreInformation = () => {
+  const { isWrapped, containerRef } = useIsFlexWrapped();
   return (
     <>
-      <div className="bg-secondary p-5 border-8 border-primary bg-[url(/assets/icon-collage.svg)] bg-no-repeat bg-right">
+      <div className="bg-secondary p-5 border-8 border-primary bg-[url(/assets/icon-collage.svg)] bg-no-repeat bg-top-right">
         <div className="space-y-4 w-4/5">
-          <div className="rounded-lg bg-gradient-to-r from-primary via-60% to-blue-500 text-white">
+          <div className="rounded-lg bg-gradient-to-r from-blue-700 via-60% to-blue-500 text-white">
             <div className="p-4 bg-[url(/assets/hand-with-light-bulb.svg)] bg-no-repeat bg-right space-y-3">
               <h2 className="text-xl">About {`{{Store_Name}}`}</h2>
               <p className="text-sm leading-4">
@@ -39,8 +43,14 @@ const StoreInformation = () => {
             </div>
           </div>
           <div className="p-2 bg-indigo-900/30">
-            <div className="flex gap-5 w-full flex-wrap">
-              <div className="flex-1">
+            <div
+              ref={containerRef}
+              className={cn(
+                `flex gap-y-5 w-full flex-wrap divide-x divide-gray-700`,
+                isWrapped && "divide-x-0"
+              )}
+            >
+              <div className={cn("flex-1 pr-5", isWrapped && "pr-0")}>
                 <div className="flex justify-between">
                   <Badge className="bg-warning uppercase">Week Days</Badge>
                   <Badge className="bg-warning uppercase">
@@ -48,34 +58,29 @@ const StoreInformation = () => {
                   </Badge>
                 </div>
                 <div className="space-y-4 text-white text-xs font-light py-2">
-                  <div className="items-center gap-4 grid grid-cols-3">
-                    Monday <hr className="w-full max-w-28 border-gray-700" />{" "}
-                    6:00am - 9:00px
+                  <div className="items-center gap-2 grid grid-cols-3">
+                    <span>Monday</span> <hr className="border-gray-700" />{" "}
+                    <span>6:00am - 9:00pm</span>
                   </div>
-                  <div className="items-center gap-4 grid grid-cols-3">
-                    Tuesday <hr className="w-full max-w-28 border-gray-700" />{" "}
-                    6:00am - 9:00px
+                  <div className="items-center gap-2 grid grid-cols-3">
+                    <span>Tuesday</span> <hr className="border-gray-700" />{" "}
+                    <span>6:00am - 9:00pm</span>
                   </div>
-                  <div className="items-center gap-4 grid grid-cols-3">
-                    Wednesday <hr className="w-full max-w-28 border-gray-700" />{" "}
-                    6:00am - 9:00px
+                  <div className="items-center gap-2 grid grid-cols-3">
+                    <span>Wednesday</span> <hr className="border-gray-700" />{" "}
+                    <span>6:00am - 9:00pm</span>
                   </div>
-                  <div className="items-center gap-4 grid grid-cols-3">
-                    Thursday <hr className="w-full max-w-28 border-gray-700" />{" "}
-                    6:00am - 9:00px
+                  <div className="items-center gap-2 grid grid-cols-3">
+                    <span>Thursday</span> <hr className="border-gray-700" />{" "}
+                    <span>6:00am - 9:00pm</span>
                   </div>
-                  <div className="items-center gap-4 grid grid-cols-3">
-                    Friday <hr className="w-full max-w-28 border-gray-700" />{" "}
-                    6:00am - 9:00px
-                  </div>
-                  <div className="items-center gap-4 grid grid-cols-3">
-                    Saturday <hr className="w-full max-w-28 border-gray-700" />{" "}
-                    6:00am - 9:00px
+                  <div className="items-center gap-2 grid grid-cols-3">
+                    <span>Friday</span> <hr className="border-gray-700" />{" "}
+                    <span>6:00am - 9:00pm</span>
                   </div>
                 </div>
               </div>
-              <div className="border-r border-gray-700 w-px min-h-full " />
-              <div className="flex-1">
+              <div className={cn("flex-1 pl-5", isWrapped && "pl-0")}>
                 <div className="flex justify-between">
                   <Badge className="bg-warning uppercase">Weekend</Badge>
                   <Badge className="bg-warning uppercase">
@@ -83,13 +88,13 @@ const StoreInformation = () => {
                   </Badge>
                 </div>
                 <div className="space-y-4 text-white text-xs font-light py-2">
-                  <div className="items-center gap-4 grid grid-cols-3">
-                    Sunday <hr className="w-full max-w-28 border-gray-700" />{" "}
-                    6:00am - 9:00px
+                  <div className="items-center gap-2 grid grid-cols-3">
+                    <span>Sunday</span> <hr className="border-gray-700" />{" "}
+                    <span>6:00am - 9:00pm</span>
                   </div>
-                  <div className="items-center gap-4 grid grid-cols-3">
-                    Saturday <hr className="w-full max-w-28 border-gray-700" />{" "}
-                    6:00am - 9:00px
+                  <div className="items-center gap-2 grid grid-cols-3">
+                    <span>Saturday</span> <hr className="border-gray-700" />{" "}
+                    <span>6:00am - 9:00pm</span>
                   </div>
                 </div>
               </div>

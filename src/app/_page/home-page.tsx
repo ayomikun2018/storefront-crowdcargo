@@ -3,6 +3,8 @@
 import { FilterIcon, ShareIcon } from "@/components/crowdcargo-icons";
 import HomeBannerCarousel from "@/components/home/home-banner-carousel";
 import ShareDropdown from "@/components/home/share-dropdown";
+import CustomerRatings from "@/components/home/tabs/customer-ratings";
+import DeliveryPolicy from "@/components/home/tabs/delivery-policy";
 import ProductListings from "@/components/home/tabs/products/product-listings";
 import StoreInformation from "@/components/home/tabs/store-information";
 import { Badge } from "@/components/ui/badge";
@@ -91,6 +93,12 @@ const HomePage = ({
             </TabsContent>
             <TabsContent value="store-information">
               <StoreInformation />
+            </TabsContent>
+            <TabsContent value="delivery-policy">
+              <DeliveryPolicy />
+            </TabsContent>
+            <TabsContent value="customer-reviews">
+              <CustomerRatings />
             </TabsContent>
             <TabsContent value="password">
               Change your password here.

@@ -59,7 +59,7 @@ const HomeBannerCarousel = () => {
                     We are 5mins away
                   </Button>
                 </div>
-                <Badge className="flex gap-1 bg-destructive rounded-tl-xs">
+                <Badge className="flex gap-1 bg-destructive">
                   <PriceTagIcon className="!size-4 text-warning" /> ON SALES
                 </Badge>
               </div>
