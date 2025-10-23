@@ -21,7 +21,7 @@ const DeliveryPolicy = () => {
         </div>
       </div>
       <Accordion type="single" collapsible className="">
-        {Array(10)
+        {Array(5)
           .fill(null)
           .map((_, index) => (
             <AccordionItem

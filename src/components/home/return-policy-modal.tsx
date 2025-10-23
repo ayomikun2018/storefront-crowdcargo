@@ -35,7 +35,7 @@ const ReturnPolicyModal: FC<BaseModalProps> = ({ trigger }) => {
         </div>
       </div>
       <Accordion type="single" collapsible className="divide-y divide-gray-300">
-        {Array(10)
+        {Array(5)
           .fill(null)
           .map((_, index) => (
             <AccordionItem value={`item-${index + 1}`} key={index}>
