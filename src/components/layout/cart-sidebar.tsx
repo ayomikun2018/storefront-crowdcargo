@@ -7,7 +7,6 @@ import {
   PlusCircleIcon,
   XCircleIcon,
 } from "@/components/crowdcargo-icons";
-import { footerHeight } from "@/components/layout/footer";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,46 +18,24 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import useFooterIntersect from "@/hooks/use-footer-intersect";
 import { cn, currencyFormatter } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 export function CartSidebar() {
   const { open } = useSidebar();
-  const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    function handleScroll() {
-      const offset = footerHeight;
-      const scrollTop = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const docHeight = document.documentElement.scrollHeight;
-
-      // Distance from bottom
-      const distanceFromBottom = docHeight - (scrollTop + windowHeight);
-      const isScrolled = distanceFromBottom <= offset;
-
-      setScrolled(isScrolled);
-    }
-
-    window.addEventListener("scroll", handleScroll);
-
-    // Run once in case page is already short
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+  const { intersectionData } = useFooterIntersect();
   return (
     <div className={open ? "w-80" : "w-1"}>
       <Sidebar
         className={cn(
           "border-l border-l-gray-100 bg-white transition-all top-24 h-[calc(100vh-88px])]",
-          open ? "w-80" : "w-0",
-          scrolled ? "bottom-[217.594px]" : "top-24"
+          open ? "w-80" : "w-0"
         )}
         side="right"
+        style={{ bottom: `${intersectionData.pixelsVisible}px` }}
       >
         <SidebarHeader className="text-2xl text-gray-600 bg-white pb-5">
           My Cart (4 Items)
@@ -117,7 +94,7 @@ export function CartSidebar() {
               Delivery fees are calculated at checkout.
             </AlertDescription>
           </Alert>
-          <div className="space-y-2.5 py-2 px-3 bg-secondary text-white">
+          <div className="space-y-2.5 py-2 px-3 bg-secondary text-white border-5 border-primary">
             <div className="flex gap-2">
               <span className="border border-white rounded-lg inline-block p-2 bg-gradient-to-r from-secondary via-secondary to-violet-900">
                 <CartIcon className="size-7 !text-white" />

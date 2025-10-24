@@ -20,7 +20,7 @@ const ReturnPolicyModal: FC<BaseModalProps> = ({ trigger }) => {
       hideTitle
       hideCloseButton
     >
-      <div className="relative rounded-lg bg-gradient-to-r from-primary via-60% to-blue-500 text-white">
+      <div className="relative rounded-lg bg-gradient-to-r from-blue-700 via-60% to-blue-500 text-white">
         <div className="px-4 py-6 flex justify-between items-center bg-[url(/assets/return-policy-illustration.svg)] bg-no-repeat bg-right">
           <div className="space-y-3">
             <Badge className="bg-white/20 text-white">
@@ -35,7 +35,7 @@ const ReturnPolicyModal: FC<BaseModalProps> = ({ trigger }) => {
         </div>
       </div>
       <Accordion type="single" collapsible className="divide-y divide-gray-300">
-        {Array(10)
+        {Array(5)
           .fill(null)
           .map((_, index) => (
             <AccordionItem value={`item-${index + 1}`} key={index}>

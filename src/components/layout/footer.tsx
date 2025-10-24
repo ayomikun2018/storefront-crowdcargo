@@ -7,16 +7,12 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-// The exact height (in pixels) of the footer.
-// This value is used in layout calculations to determine when the sidebars
-// should shift from a top-aligned to bottom-aligned position as the viewport
-// approaches the footer.
-// ⚠️ Update this value if the footer height changes.
-export const footerHeight = 217.594;
-
 const Footer = () => {
   return (
-    <footer className=" w-full bg-[url(/assets/footer-box-bg.svg)] space-y-10 pt-8  z-50 bg-white">
+    <footer
+      className=" w-full bg-[url(/assets/footer-box-bg.svg)] space-y-10 pt-8  z-50 bg-white"
+      id="footer"
+    >
       <section className="mx-auto container flex justify-between items-center w-full px-5">
         <div className="flex gap-4 items-center">
           <div className="rounded-full p-[0.3rem] inline-block bg-gradient-to-t from-purple-500 to-primary">
