@@ -22,6 +22,7 @@ import useFooterIntersect from "@/hooks/use-footer-intersect";
 import { cn, currencyFormatter } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export function CartSidebar() {
   const { open } = useSidebar();
@@ -109,9 +110,13 @@ export function CartSidebar() {
                 </p>
               </div>
             </div>
-            <Button className="uppercase flex gap-2 items-center w-full bg-warning text-xs">
-              {" "}
-              Proceed to checkout <ArrowRight size={14} />
+            <Button
+              className="uppercase flex gap-2 items-center w-full bg-warning text-xs"
+              asChild
+            >
+              <Link href="/checkout">
+                Proceed to checkout <ArrowRight size={14} />
+              </Link>
             </Button>
           </div>
         </SidebarFooter>

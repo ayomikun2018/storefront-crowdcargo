@@ -2,8 +2,11 @@ export { default as ArrowRightIcon } from "@/components/crowdcargo-icons/arrow-r
 export { default as BoxIcon } from "@/components/crowdcargo-icons/box-icon";
 export { default as CarIcon } from "@/components/crowdcargo-icons/car-icon";
 export { default as CartIcon } from "@/components/crowdcargo-icons/cart-icon";
+export { default as CautionIcon } from "@/components/crowdcargo-icons/caution-icon";
+export { default as ChevronLeftIcon } from "@/components/crowdcargo-icons/chevron-left-icon";
 export { default as ClockIcon } from "@/components/crowdcargo-icons/clock-icon";
 export { default as CopyIcon } from "@/components/crowdcargo-icons/copy-icon";
+export { default as EditIcon } from "@/components/crowdcargo-icons/edit-icon";
 export { default as ExpandIcon } from "@/components/crowdcargo-icons/expand-icon";
 export { default as FilterIcon } from "@/components/crowdcargo-icons/filter-icon";
 export { default as FlagIcon } from "@/components/crowdcargo-icons/flag-icon";
