@@ -1,11 +1,8 @@
 "use client";
 import { ClockIcon, TruckIcon } from "@/components/crowdcargo-icons";
 import { Badge } from "@/components/ui/badge";
-import useIsFlexWrapped from "@/hooks/use-is-flex-wrapped";
-import { cn } from "@/lib/utils";
 
 const StoreInformation = () => {
-  const { isWrapped, containerRef } = useIsFlexWrapped();
   return (
     <>
       <div className="bg-secondary p-5 border-8 border-primary bg-[url(/assets/icon-collage.svg)] bg-no-repeat bg-top-right">
@@ -42,15 +39,11 @@ const StoreInformation = () => {
               </Badge>
             </div>
           </div>
-          <div className="p-2 bg-indigo-900/30">
+          <div className="p-2 bg-indigo-900/30 @container">
             <div
-              ref={containerRef}
-              className={cn(
-                `flex gap-y-5 w-full flex-wrap divide-x divide-gray-700`,
-                isWrapped && "divide-x-0"
-              )}
+              className={`flex gap-y-5 w-full flex-wrap @lg:divide-x divide-gray-700`}
             >
-              <div className={cn("flex-1 pr-5", isWrapped && "pr-0")}>
+              <div className={"flex-1 @lg:pr-5"}>
                 <div className="flex justify-between">
                   <Badge className="bg-warning uppercase">Week Days</Badge>
                   <Badge className="bg-warning uppercase">
@@ -80,7 +73,7 @@ const StoreInformation = () => {
                   </div>
                 </div>
               </div>
-              <div className={cn("flex-1 pl-5", isWrapped && "pl-0")}>
+              <div className={"flex-1 @lg:pl-5"}>
                 <div className="flex justify-between">
                   <Badge className="bg-warning uppercase">Weekend</Badge>
                   <Badge className="bg-warning uppercase">
