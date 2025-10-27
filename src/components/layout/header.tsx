@@ -3,20 +3,13 @@ import {
   CartIcon,
   HeadsetIcon,
   MapPinIcon,
-  SearchIcon,
   StarIcon,
 } from "@/components/crowdcargo-icons";
+import ReturnPolicyModal from "@/components/home/return-policy-modal";
 import SearchStore from "@/components/layout/search-store";
 import UserPanel from "@/components/layout/user-panel";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -37,7 +30,7 @@ const Header = () => {
   const { toggleSidebar } = useSidebar();
   return (
     <div className="sticky top-0 border-b border-b-gray-100 z-30 bg-background">
-      <header className="container mx-auto p-3">
+      <header className="2xl:container mx-auto p-3">
         <nav className="flex  gap-6 items-center justify-between">
           <div className="flex gap-4 items-center">
             <div className="rounded-full p-[0.2rem] inline-block bg-gradient-to-t from-purple-500 to-primary">
@@ -95,12 +88,16 @@ const Header = () => {
                 <HeadsetIcon className="size-5" /> Help
               </Link>
             </Button>
-            <Button
-              className="text-white rounded-2xl flex gap-2 bg-secondary hover:bg-initial"
-              asChild
-            >
-              <Link href="#">Return Policy</Link>
-            </Button>
+            <ReturnPolicyModal
+              trigger={
+                <Button
+                  className="text-white rounded-2xl flex gap-2 bg-secondary hover:bg-initial"
+                  asChild
+                >
+                  <Link href="#">Return Policy</Link>
+                </Button>
+              }
+            />
             <button
               type="button"
               className="relative cursor-pointer"

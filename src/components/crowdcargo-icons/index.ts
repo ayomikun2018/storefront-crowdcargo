@@ -20,7 +20,9 @@ export { default as PlusCircleIcon } from "@/components/crowdcargo-icons/plus-ci
 export { default as PriceTagIcon } from "@/components/crowdcargo-icons/price-tag-icon";
 export { default as SearchIcon } from "@/components/crowdcargo-icons/search-icon";
 export { default as ShareIcon } from "@/components/crowdcargo-icons/share-icon";
+export { default as SmsIcon } from "@/components/crowdcargo-icons/sms-icon";
 export { default as StarIcon } from "@/components/crowdcargo-icons/star-icon";
 export { default as StoreIcon } from "@/components/crowdcargo-icons/store-icon";
 export { default as TruckIcon } from "@/components/crowdcargo-icons/truck-icon";
 export { default as XCircleIcon } from "@/components/crowdcargo-icons/x-circle-icon";
+export { default as DoorLockIcon } from "@/components/crowdcargo-icons/door-lock-icon";

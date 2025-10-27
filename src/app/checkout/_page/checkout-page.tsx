@@ -34,11 +34,9 @@ const validationSchema = Yup.object({
     .default(""),
 });
 
-type FormFields = Yup.InferType<typeof validationSchema>;
-
 const CheckoutPage = () => {
   const [showOrderSuccess, setShowOrderSuccess] = useState(false);
-  const formik = useFormik<FormFields>({
+  const formik = useFormik({
     initialValues: validationSchema.getDefault(),
     validationSchema,
     onSubmit: (values) => console.log(values),
@@ -84,24 +82,24 @@ const CheckoutPage = () => {
             <FloatingInput
               formik={formik}
               name="firstName"
-              inputProps={{ type: "text" }}
+              type="text"
               label="First Name"
             />
             <FloatingInput
               formik={formik}
               name="lastName"
-              inputProps={{ type: "text" }}
+              type="text"
               label="Last Name"
             />
             <FloatingInput
-              inputProps={{ type: "tel" }}
+              type="tel"
               label="Recipient Phone No"
               formik={formik}
               name="phoneNumber"
             />
             <FloatingInput
               formik={formik}
-              inputProps={{ type: "email" }}
+              type="email"
               label="Email Address"
               name="email"
             />
@@ -126,7 +124,7 @@ const CheckoutPage = () => {
             />
             <FloatingInput
               formik={formik}
-              inputProps={{ type: "text" }}
+              type="text"
               label="Drop-Off Address"
               name="dropOffAddress"
               className="md:col-span-2"
@@ -183,7 +181,7 @@ const CheckoutPage = () => {
           <FloatingInput
             formik={formik}
             name="promoCode"
-            inputProps={{ type: "text" }}
+            type="text"
             label="Enter promo code to get a discount"
           />
           <div className="divide-y divide-gray-300 text-sm">

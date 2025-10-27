@@ -35,7 +35,7 @@ const HomePage = ({
   const TAB_CLASS =
     "text-xs text-gray-600 data-[state=active]:border-b-2 data-[state=active]:border-b-primary data-[state=active]:text-foreground rounded-none !bg-transparent flex-none !shadow-none cursor-pointer px-0 uppercase";
   return (
-    <div className="max-w-7xl [@media(min-width:2000px)]:container p-5 mx-auto space-y-5">
+    <div className="max-w-7xl 2xl:container p-5 mx-auto space-y-5">
       {!search ? (
         <>
           <HomeBannerCarousel />
