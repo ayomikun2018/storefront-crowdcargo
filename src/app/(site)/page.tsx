@@ -1,4 +1,4 @@
-import HomePage from "@/app/_page/home-page";
+import HomePage from "@/app/(site)/_page/home-page";
 
 export default async function Home({
   searchParams,
