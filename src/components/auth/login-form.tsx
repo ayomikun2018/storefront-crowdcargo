@@ -84,7 +84,7 @@ const LoginForm: FC<LoginFormProps> = ({ setActiveForm }) => {
           <Button
             className="w-full h-11 rounded-2xl"
             type="button"
-            onClick={() => router.push("/portal/orders")}
+            onClick={() => router.push("/portal")}
           >
             Login
           </Button>

@@ -62,7 +62,7 @@ const NewPasswordForm: FC<NewPasswordFormProps> = ({ setActiveForm }) => {
           <Button
             className="w-full h-11 rounded-2xl"
             type="button"
-            onClick={() => router.push("/portal/orders")}
+            onClick={() => router.push("/portal")}
           >
             Done
           </Button>
