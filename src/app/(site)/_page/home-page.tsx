@@ -100,9 +100,6 @@ const HomePage = ({
             <TabsContent value="customer-reviews">
               <CustomerRatings />
             </TabsContent>
-            <TabsContent value="password">
-              Change your password here.
-            </TabsContent>
           </Tabs>
         </>
       ) : (

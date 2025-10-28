@@ -26,7 +26,7 @@ const SearchStore = () => {
       />
       <div
         className={cn(
-          `absolute opacity-0 top-3 -z-[50] duration-300 h-0 peer-focus:h-auto peer-focus:z-20 peer-focus:top-14 peer-focus:opacity-100  bg-white rounded-lg w-full p-2 drop-shadow-2xl overflow-hidden`,
+          `absolute opacity-0 top-3 -z-[50] duration-300 h-0 peer-focus:h-auto peer-focus:z-20 peer-focus:top-14 peer-focus:opacity-100  bg-white rounded-lg w-full p-2 drop-shadow-2xl !overflow-hidden`,
           showPopover && "z-20 top-14 opacity-100 block"
         )}
       >

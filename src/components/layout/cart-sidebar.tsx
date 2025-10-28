@@ -23,11 +23,18 @@ import { cn, currencyFormatter } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 export function CartSidebar() {
-  const { open } = useSidebar();
+  const { open, setOpen } = useSidebar();
 
   const { intersectionData } = useFooterIntersect();
+  const pathname = usePathname();
+  useEffect(() => {
+    if (pathname == "/checkout" || pathname.startsWith("/portal"))
+      setOpen(false);
+  }, [pathname]);
   return (
     <div className={open ? "w-80" : "w-1"}>
       <Sidebar

@@ -11,6 +11,7 @@ import FloatingInput, {
 } from "@/components/elements/floating-input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useSidebar } from "@/components/ui/sidebar";
 import { currencyFormatter } from "@/lib/utils";
 import { useFormik } from "formik";
 import Image from "next/image";
@@ -41,7 +42,7 @@ const CheckoutPage = () => {
     validationSchema,
     onSubmit: (values) => console.log(values),
   });
-
+  const { setOpen: setOpenCartSidebar } = useSidebar();
   return (
     <>
       <div className="flex flex-wrap gap-6">
@@ -52,16 +53,19 @@ const CheckoutPage = () => {
                 <ChevronLeftIcon className="size-5" />
               </Link>
               Checkout
-              <Badge className="bg-blue-50 text-gray-600 py-1.5">
+              <Badge className="bg-blue-50 text-gray-600 py-1.5 text-sm">
                 Cart Total{" "}
                 <span className="text-primary">
                   - {currencyFormatter(7000)}
                 </span>
               </Badge>
             </h2>
-            <Badge className="bg-blue-50 text-gray-600">
+            <Badge className="bg-blue-50 text-gray-600 text-sm">
               Total Items - (2){" "}
-              <Button className="!bg-blue-200 flex gap-1 rounded-3xl px-1 h-5 text-primary text-xs">
+              <Button
+                className="!bg-blue-200 flex gap-1 rounded-3xl px-1 h-5 text-primary text-sm"
+                onClick={() => setOpenCartSidebar(true)}
+              >
                 <EditIcon className="size-4" /> Edit Cart
               </Button>
             </Badge>
@@ -149,64 +153,66 @@ const CheckoutPage = () => {
           </div>
         </div>
         <div className="space-y-4 md:flex-1 min-w-56">
-          <div className="flex justify-between py-4 border-b border-gray-200">
-            <h2 className="gap-2 items-center text-2xl font-semibold text-gray-500">
-              Order Details
-            </h2>
-          </div>
-          <h4 className="uppercase font-semiold text-sm">Delivery Detail</h4>
-          <Image
-            alt="deliver-detail-illustration"
-            src="/assets/delivery-details-illustration.svg"
-            height={300}
-            width={500}
-          />
-          <p className="font-semibold text-xl text-center">
-            Delivery details will appear here
-          </p>
-          <div className="divide-y divide-gray-300 text-sm">
-            <div className="flex justify-between py-2">
-              <span className="text-gray-500">Sub-total (4 Items)</span>
-              <span>{currencyFormatter(6200)}</span>
+          <div className="relative">
+            <div className="flex justify-between py-4 border-b border-gray-200">
+              <h2 className="gap-2 items-center text-2xl font-semibold text-gray-500">
+                Order Details
+              </h2>
             </div>
-            <div className="flex justify-between py-2">
-              <span className="text-gray-500">Service Fee</span>
-              <span>{currencyFormatter(1200)}</span>
+            <h4 className="uppercase font-semiold text-sm">Delivery Detail</h4>
+            <Image
+              alt="deliver-detail-illustration"
+              src="/assets/delivery-details-illustration.svg"
+              height={300}
+              width={500}
+            />
+            <p className="font-semibold text-xl text-center">
+              Delivery details will appear here
+            </p>
+            <div className="divide-y divide-gray-300 text-sm">
+              <div className="flex justify-between py-2">
+                <span className="text-gray-500">Sub-total (4 Items)</span>
+                <span>{currencyFormatter(6200)}</span>
+              </div>
+              <div className="flex justify-between py-2">
+                <span className="text-gray-500">Service Fee</span>
+                <span>{currencyFormatter(1200)}</span>
+              </div>
+              <div className="flex justify-between py-2">
+                <span className="text-gray-500">Discount Fee</span>
+                <span>{currencyFormatter(0)}</span>
+              </div>
             </div>
-            <div className="flex justify-between py-2">
-              <span className="text-gray-500">Discount Fee</span>
-              <span>{currencyFormatter(0)}</span>
+            <FloatingInput
+              formik={formik}
+              name="promoCode"
+              type="text"
+              label="Enter promo code to get a discount"
+            />
+            <div className="divide-y divide-gray-300 text-sm">
+              <div className="flex justify-between py-2">
+                <span>Order Total</span>
+                <span>{currencyFormatter(7600)}</span>
+              </div>
+              <div className="flex justify-between py-2">
+                <span className="text-gray-500">Shipping (Delivery)</span>
+                <span className="text-warning">Pending pickup address</span>
+              </div>
+              <div className="flex justify-between py-2 font-semibold">
+                <span className="">Total Due</span>
+                <span className="">{currencyFormatter(7600)}</span>
+              </div>
             </div>
-          </div>
-          <FloatingInput
-            formik={formik}
-            name="promoCode"
-            type="text"
-            label="Enter promo code to get a discount"
-          />
-          <div className="divide-y divide-gray-300 text-sm">
-            <div className="flex justify-between py-2">
-              <span>Order Total</span>
-              <span>{currencyFormatter(7600)}</span>
+            <div className="space-y-2 pt-4 mb-2 sticky bottom-0">
+              <Button
+                className="w-full h-12 rounded-none text-md"
+                type="submit"
+                form="checkout-form"
+                onClick={() => setShowOrderSuccess(true)}
+              >
+                Pay {currencyFormatter(7600)}
+              </Button>
             </div>
-            <div className="flex justify-between py-2">
-              <span className="text-gray-500">Shipping (Delivery)</span>
-              <span className="text-warning">Pending pickup address</span>
-            </div>
-            <div className="flex justify-between py-2 font-semibold">
-              <span className="">Total Due</span>
-              <span className="">{currencyFormatter(7600)}</span>
-            </div>
-          </div>
-          <div className="space-y-2 pt-4">
-            <Button
-              className="w-full h-10 rounded-none"
-              type="submit"
-              form="checkout-form"
-              onClick={() => setShowOrderSuccess(true)}
-            >
-              Pay {currencyFormatter(7600)}
-            </Button>
             <p className="flex gap-1 text-xs">
               <CautionIcon />
               <span className="text-gray-500">
