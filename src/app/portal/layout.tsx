@@ -1,4 +1,3 @@
-import { AppSidebar } from "@/components/layout/app-sidebar";
 import { CartSidebar } from "@/components/layout/cart-sidebar";
 import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
