@@ -12,11 +12,11 @@ import { Badge } from "@/components/ui/badge";
 import { DialogClose } from "@/components/ui/dialog";
 import React, { FC } from "react";
 
-const ReturnPolicyModal: FC<BaseModalProps> = ({ trigger }) => {
+const FAQsModal: FC<BaseModalProps> = ({ trigger }) => {
   return (
     <ModalWrapper
       trigger={trigger}
-      className="md:max-w-6xl w-full max-h-[80vh] overflow-auto py-1"
+      className="md:max-w-3xl overflow-auto py-1"
       hideTitle
       hideCloseButton
     >
@@ -26,7 +26,9 @@ const ReturnPolicyModal: FC<BaseModalProps> = ({ trigger }) => {
             <Badge className="bg-white/20 text-white">
               Last Updated: 3 days ago
             </Badge>
-            <h2 className="text-2xl font-semibold">Return Policy</h2>
+            <h2 className="text-2xl font-semibold">
+              Frequently Asked Questions
+            </h2>
           </div>
 
           <DialogClose className="bg-white/10 p-2 rounded-full">
@@ -56,4 +58,4 @@ const ReturnPolicyModal: FC<BaseModalProps> = ({ trigger }) => {
   );
 };
 
-export default ReturnPolicyModal;
+export default FAQsModal;

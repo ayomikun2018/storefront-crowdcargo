@@ -1,7 +1,7 @@
 import "@/app/globals.css";
 import Providers from "@/app/providers";
 import type { Metadata } from "next";
-import { athleticsFont, chillaxFont } from "../../src/lib/font";
+import { athleticsFont, chillaxFont } from "@/lib/font";
 
 export const metadata: Metadata = {
   title: {

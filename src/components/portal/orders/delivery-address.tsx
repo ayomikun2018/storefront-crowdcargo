@@ -17,8 +17,10 @@ const validationSchema = Yup.object({
     .required("Email is required")
     .default(""),
   phoneNumber: Yup.string().required("Phone number is requird").default(""),
+  country: Yup.string().required("Country is required").default("Nigeria"),
   state: Yup.string().required("State is required").default(""),
-  location: Yup.string().required("Location is required").default(""),
+  lga: Yup.string().required("LGA is required").default(""),
+  area: Yup.string().required("Area is required").default(""),
   dropOffAddress: Yup.string()
     .required("Drop off address is required")
     .default(""),
@@ -71,6 +73,12 @@ const DeliveryAddress = () => {
           name="email"
         />
         <FloatingSelect
+          label="Country"
+          name="country"
+          formik={formik}
+          options={[{ value: "Nigeria", label: "Nigeria" }]}
+        />
+        <FloatingSelect
           label="State"
           name="state"
           formik={formik}
@@ -81,12 +89,21 @@ const DeliveryAddress = () => {
           ]}
         />
         <FloatingSelect
-          label="Location"
-          name="location"
+          label="LGA"
+          name="lga"
           formik={formik}
           options={[
-            { value: "location-1", label: "Location 1" },
-            { value: "location-2", label: "Location 2" },
+            { value: "lga-1", label: "lga 1" },
+            { value: "lga-2", label: "lga 2" },
+          ]}
+        />
+        <FloatingSelect
+          label="Area"
+          name="area"
+          formik={formik}
+          options={[
+            { value: "location-1", label: "location 1" },
+            { value: "location-2", label: "location 2" },
           ]}
         />
         <FloatingInput

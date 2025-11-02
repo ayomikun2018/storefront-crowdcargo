@@ -16,7 +16,7 @@ const ShareDropdown: FC<ShareDropdownProps> = ({ trigger }) => {
   return (
     <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger asChild>{trigger}</PopoverTrigger>
-      <PopoverContent className="w-max">
+      <PopoverContent className="w-max mr-2">
         <div className="space-y-4">
           <div className="flex justify-between items-center">
             <h4 className="font-semibold text-xl leading-4">Share Link</h4>
@@ -24,7 +24,7 @@ const ShareDropdown: FC<ShareDropdownProps> = ({ trigger }) => {
               className="rounded-full size-8 !bg-gray-200 text-foreground"
               onClick={() => setIsOpen(false)}
             >
-              <XCircleIcon className="size-4" />
+              <XCircleIcon className="size-5" />
             </Button>
           </div>
           <hr className=" border-gray-500" />

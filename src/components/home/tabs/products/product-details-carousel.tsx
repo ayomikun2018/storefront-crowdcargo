@@ -1,6 +1,7 @@
 "use";
 import { ExpandIcon, ShareIcon } from "@/components/crowdcargo-icons";
 import ModalWrapper from "@/components/elements/modal-wrapper";
+import ShareDropdown from "@/components/home/share-dropdown";
 import { Button } from "@/components/ui/button";
 import {
   Carousel,
@@ -38,8 +39,8 @@ const ProductDetailsCarousel: FC<ProductDetailsCarouselProps> = ({
     });
   }, [api]);
   return (
-    <div className="grid grid-cols-5 h-64 gap-2">
-      <div className="col-span-4">
+    <div className="grid grid-cols-4 h-64 gap-2">
+      <div className="col-span-3">
         <Carousel
           setApi={setApi}
           opts={{
@@ -81,7 +82,7 @@ const ProductDetailsCarousel: FC<ProductDetailsCarouselProps> = ({
         </Carousel>
       </div>
       <div className="flex flex-col gap-2">
-        <ScrollArea className="flex flex-col items-baseline gap-3 max-h-[13.5rem] overflow-y-auto">
+        <ScrollArea className="flex flex-col items-baseline gap-3 max-h-[13.5rem] overflow-y-auto pr-2">
           {images.map((each, index) => (
             <button
               key={index}
@@ -102,10 +103,14 @@ const ProductDetailsCarousel: FC<ProductDetailsCarouselProps> = ({
             </button>
           ))}
         </ScrollArea>
-        <Button className="gap-1 h-8">
-          <ShareIcon className="size-3.5" />
-          Share
-        </Button>
+        <ShareDropdown
+          trigger={
+            <Button className="gap-1 h-8">
+              <ShareIcon className="size-3.5" />
+              Share
+            </Button>
+          }
+        />
       </div>
     </div>
   );

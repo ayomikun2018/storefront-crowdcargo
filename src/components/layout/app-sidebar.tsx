@@ -3,10 +3,13 @@ import { Label } from "@/components/ui/label";
 
 import { MenuIcon } from "lucide-react";
 
+import { MapPinIcon } from "@/components/crowdcargo-icons";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -17,6 +20,8 @@ import {
 import useFooterIntersect from "@/hooks/use-footer-intersect";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 const categories = [
   "Foodstuff",
@@ -26,9 +31,14 @@ const categories = [
   "Textbooks",
 ];
 export function AppSidebar() {
-  const { toggleSidebar, open } = useSidebar();
+  const { toggleSidebar, open, setOpen } = useSidebar();
 
   const { intersectionData } = useFooterIntersect();
+  const pathname = usePathname();
+  useEffect(() => {
+    if (pathname == "/checkout" || pathname.startsWith("/portal"))
+      setOpen(false);
+  }, [pathname]);
   return (
     <div
       className={` flex min-h-screen h-ful ${
@@ -120,6 +130,15 @@ export function AppSidebar() {
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
+        <SidebarFooter className="gap-0 p-0">
+          <Alert className="bg-primary/5 text-primary rounded-none">
+            <MapPinIcon className="text-primary size-5!" />
+            <AlertDescription className="text-sm wrap-normal">
+              Delivery Address,{" "}
+              <span className="text-primary">37, Nnobi street, Surulere</span>
+            </AlertDescription>
+          </Alert>
+        </SidebarFooter>
       </Sidebar>
       <button
         className={cn(

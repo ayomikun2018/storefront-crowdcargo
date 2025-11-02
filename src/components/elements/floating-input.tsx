@@ -166,7 +166,7 @@ export const FloatingSelect = <T,>({
       {label && (
         <span
           className={cn(
-            "text-gray-400 transition-all duration-200 absolute left-4 text-sm top-6 peer-focus:top-1.5 peer-focus:text-xs",
+            "text-gray-500 transition-all duration-200 absolute left-4 text-sm top-6 peer-focus:top-1.5 peer-focus:text-xs",
             localValue || formikValue ? "top-1.5 text-xs" : ""
           )}
         >

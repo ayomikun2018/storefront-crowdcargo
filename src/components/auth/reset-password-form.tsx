@@ -1,5 +1,6 @@
 "use client";
 import { FormVariants } from "@/components/auth/auth-sheet";
+import FloatingInput from "@/components/elements/floating-input";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
@@ -8,12 +9,12 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { useFormik } from "formik";
-import { Dispatch, FC, SetStateAction } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object({
-  email: Yup.string().email().required("Email is required").default(""),
-  phoneNumber: Yup.string().required("Phone number is required").default(""),
+  email: Yup.string().email().optional().default(""),
+  phoneNumber: Yup.string().optional().default(""),
 });
 
 interface ResetPasswordFormProps {
@@ -28,8 +29,8 @@ const ResetPasswordForm: FC<ResetPasswordFormProps> = ({ setActiveForm }) => {
       console.log(data);
     },
   });
-  const LABEL_CLASSNAME =
-    "flex items-center gap-3 w-full bg-gray-100 rounded-2xl p-4 text-sm has-[button[data-state=checked]]:bg-blue-50 has-[button[data-state=checked]]:border has-[button[data-state=checked]]:border-primary cursor-pointer";
+  const LABEL_CLASSNAME = "";
+  const [selectedOption, setSelectedOption] = useState("email-radio");
   return (
     <>
       <SheetHeader>
@@ -41,21 +42,31 @@ const ResetPasswordForm: FC<ResetPasswordFormProps> = ({ setActiveForm }) => {
       </SheetHeader>
       <div className="space-y-10 px-4">
         <div className="space-y-2">
-          <RadioGroup defaultValue="email">
-            <label className={LABEL_CLASSNAME}>
-              <div className="space-y-1 flex-grow">
-                <p className="font-semibold">Email Address</p>
-                <p className="text-xs text-gray-400">jsaf****gmail.com</p>
-              </div>
-              <RadioGroupItem value="email" />
-            </label>
-            <label className={LABEL_CLASSNAME}>
-              <div className="space-y-1 flex-grow">
-                <p className="font-semibold">Phone Number</p>
-                <p className="text-xs text-gray-400">jsaf****gmail.com</p>
-              </div>
-              <RadioGroupItem value="phoneNumber" />
-            </label>
+          <RadioGroup
+            defaultValue="email"
+            value={selectedOption}
+            onValueChange={setSelectedOption}
+          >
+            <FloatingInput
+              type="email"
+              label="Email Address"
+              formik={formik}
+              name="email"
+              inputProps={{
+                onFocus: () => setSelectedOption("email-radio"),
+              }}
+              endContent={<RadioGroupItem value="email-radio" />}
+            />
+            <FloatingInput
+              type="text"
+              label="Phone Number"
+              formik={formik}
+              name="phoneNumber"
+              inputProps={{
+                onFocus: () => setSelectedOption("phoneNumber-radio"),
+              }}
+              endContent={<RadioGroupItem value="phoneNumber-radio" />}
+            />
           </RadioGroup>
         </div>
 

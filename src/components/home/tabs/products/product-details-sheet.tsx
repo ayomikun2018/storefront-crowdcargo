@@ -9,9 +9,16 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Sheet,
   SheetContent,
@@ -89,52 +96,39 @@ const ProductDetailsSheet: FC<ProductDetailsSheetProps> = ({
               </button>
             </div>
             <hr className="border border-muted" />
-            <div className="space-y-2">
-              <p className="text-sm text-gray-500">Product Colors</p>
-              <RadioGroup
-                className="flex flex-row gap-4 flex-wrap"
-                defaultValue={colors[0]}
-              >
-                {colors.map((each, index) => (
-                  <div
-                    className="flex items-center gap-3 bg-primary/5 p-2 px-3 rounded-lg text-lg"
-                    key={index}
-                  >
-                    <RadioGroupItem
-                      value={each}
-                      id={`r-${each}`}
-                      className="border-4 border-blue-100 p-1"
-                    />
-                    <Label htmlFor={`r-${each}`} className="flex-grow">
-                      {each}
-                    </Label>
-                  </div>
-                ))}
-              </RadioGroup>
-            </div>
-            <hr className="border border-muted" />
-            <div className="space-y-2">
-              <p className="text-sm text-gray-500">Product Sizes</p>
-              <RadioGroup
-                className="flex flex-row gap-4 flex-wrap"
-                defaultValue={sizes[0]}
-              >
-                {sizes.map((each, index) => (
-                  <div
-                    className="flex items-center gap-3 bg-primary/5 p-2 px-3 rounded-lg text-lg"
-                    key={index}
-                  >
-                    <RadioGroupItem
-                      value={each}
-                      id={`r-${each}`}
-                      className="border-4 border-blue-100 p-1"
-                    />
-                    <Label htmlFor={`r-${each}`} className="flex-grow">
-                      {each}
-                    </Label>
-                  </div>
-                ))}
-              </RadioGroup>
+            <div className="grid grid-cols-2 gap-3">
+              <SelectGroup>
+                <SelectLabel className="pl-0">Select Color</SelectLabel>
+                <Select defaultValue={colors[0]}>
+                  <SelectTrigger className="p-2 rounded-md border !h-8 w-full">
+                    <SelectValue placeholder="Select Country" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {colors.map((each, index) => (
+                      <SelectItem key={index} value={each}>
+                        {each}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </SelectGroup>
+              <div className="space-y-1">
+                <SelectGroup>
+                  <SelectLabel className="pl-0">Select Size</SelectLabel>
+                  <Select defaultValue={sizes[0]}>
+                    <SelectTrigger className="p-2 rounded-md border !h-8 w-full">
+                      <SelectValue placeholder="Select Country" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {sizes.map((each, index) => (
+                        <SelectItem key={index} value={each}>
+                          {each}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </SelectGroup>
+              </div>
             </div>
             <hr className="border border-muted" />
             <Button className="flex gap-2 w-[22rem] h-12 fixed bottom-0">

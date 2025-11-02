@@ -28,8 +28,10 @@ const validationSchema = Yup.object({
     .required("Email is required")
     .default(""),
   phoneNumber: Yup.string().required("Phone number is requird").default(""),
+  country: Yup.string().required("Country is required").default("Nigeria"),
   state: Yup.string().required("State is required").default(""),
-  location: Yup.string().required("Location is required").default(""),
+  lga: Yup.string().required("LGA is required").default(""),
+  area: Yup.string().required("Area is required").default(""),
   dropOffAddress: Yup.string()
     .required("Drop off address is required")
     .default(""),
@@ -44,7 +46,7 @@ const CheckoutPage = () => {
   });
   const { setOpen: setOpenCartSidebar } = useSidebar();
   return (
-    <>
+    <div className="relative @container">
       <div className="flex flex-wrap gap-6">
         <div className="space-y-4 md:flex-2">
           <div className="flex justify-between py-4 border-b border-gray-200">
@@ -108,6 +110,12 @@ const CheckoutPage = () => {
               name="email"
             />
             <FloatingSelect
+              label="Country"
+              name="country"
+              formik={formik}
+              options={[{ value: "Nigeria", label: "Nigeria" }]}
+            />
+            <FloatingSelect
               label="State"
               name="state"
               formik={formik}
@@ -118,12 +126,21 @@ const CheckoutPage = () => {
               ]}
             />
             <FloatingSelect
-              label="Location"
-              name="location"
+              label="LGA"
+              name="lga"
               formik={formik}
               options={[
-                { value: "location-1", label: "Location 1" },
-                { value: "location-2", label: "Location 2" },
+                { value: "lga-1", label: "lga 1" },
+                { value: "lga-2", label: "lga 2" },
+              ]}
+            />
+            <FloatingSelect
+              label="Area"
+              name="area"
+              formik={formik}
+              options={[
+                { value: "location-1", label: "location 1" },
+                { value: "location-2", label: "location 2" },
               ]}
             />
             <FloatingInput
@@ -152,81 +169,79 @@ const CheckoutPage = () => {
             </p>
           </div>
         </div>
-        <div className="space-y-4 md:flex-1 min-w-56">
-          <div className="relative">
-            <div className="flex justify-between py-4 border-b border-gray-200">
-              <h2 className="gap-2 items-center text-2xl font-semibold text-gray-500">
-                Order Details
-              </h2>
-            </div>
-            <h4 className="uppercase font-semiold text-sm">Delivery Detail</h4>
-            <Image
-              alt="deliver-detail-illustration"
-              src="/assets/delivery-details-illustration.svg"
-              height={300}
-              width={500}
-            />
-            <p className="font-semibold text-xl text-center">
-              Delivery details will appear here
-            </p>
-            <div className="divide-y divide-gray-300 text-sm">
-              <div className="flex justify-between py-2">
-                <span className="text-gray-500">Sub-total (4 Items)</span>
-                <span>{currencyFormatter(6200)}</span>
-              </div>
-              <div className="flex justify-between py-2">
-                <span className="text-gray-500">Service Fee</span>
-                <span>{currencyFormatter(1200)}</span>
-              </div>
-              <div className="flex justify-between py-2">
-                <span className="text-gray-500">Discount Fee</span>
-                <span>{currencyFormatter(0)}</span>
-              </div>
-            </div>
-            <FloatingInput
-              formik={formik}
-              name="promoCode"
-              type="text"
-              label="Enter promo code to get a discount"
-            />
-            <div className="divide-y divide-gray-300 text-sm">
-              <div className="flex justify-between py-2">
-                <span>Order Total</span>
-                <span>{currencyFormatter(7600)}</span>
-              </div>
-              <div className="flex justify-between py-2">
-                <span className="text-gray-500">Shipping (Delivery)</span>
-                <span className="text-warning">Pending pickup address</span>
-              </div>
-              <div className="flex justify-between py-2 font-semibold">
-                <span className="">Total Due</span>
-                <span className="">{currencyFormatter(7600)}</span>
-              </div>
-            </div>
-            <div className="space-y-2 pt-4 mb-2 sticky bottom-0">
-              <Button
-                className="w-full h-12 rounded-none text-md"
-                type="submit"
-                form="checkout-form"
-                onClick={() => setShowOrderSuccess(true)}
-              >
-                Pay {currencyFormatter(7600)}
-              </Button>
-            </div>
-            <p className="flex gap-1 text-xs">
-              <CautionIcon />
-              <span className="text-gray-500">
-                Your order will arive within 2-3 days.
-              </span>
-            </p>
+        <div className="space-y-4 md:flex-1 min-w-56 block overflow-visible">
+          <div className="flex justify-between py-4 border-b border-gray-200">
+            <h2 className="gap-2 items-center text-2xl font-semibold text-gray-500">
+              Order Details
+            </h2>
           </div>
+          <Image
+            alt="deliver-detail-illustration"
+            src="/assets/delivery-details-illustration.svg"
+            height={300}
+            width={500}
+          />
+          <p className="font-semibold text-xl text-center">
+            Delivery details will appear here
+          </p>
+          <div className="divide-y divide-gray-300 text-sm">
+            <div className="flex justify-between py-2">
+              <span className="text-gray-500">Sub-total (4 Items)</span>
+              <span>{currencyFormatter(6200)}</span>
+            </div>
+            <div className="flex justify-between py-2">
+              <span className="text-gray-500">Service Fee</span>
+              <span>{currencyFormatter(1200)}</span>
+            </div>
+            <div className="flex justify-between py-2">
+              <span className="text-gray-500">Discount Fee</span>
+              <span>{currencyFormatter(0)}</span>
+            </div>
+          </div>
+          <FloatingInput
+            formik={formik}
+            name="promoCode"
+            type="text"
+            label="Enter promo code to get a discount"
+          />
+          <div className="divide-y divide-gray-300 text-sm">
+            <div className="flex justify-between py-2">
+              <span>Order Total</span>
+              <span>{currencyFormatter(7600)}</span>
+            </div>
+            <div className="flex justify-between py-2">
+              <span className="text-gray-500">Shipping (Delivery)</span>
+              <span className="text-warning">Pending pickup address</span>
+            </div>
+            <div className="flex justify-between py-2 font-semibold">
+              <span className="">Total Due</span>
+              <span className="">{currencyFormatter(7600)}</span>
+            </div>
+          </div>
+
+          <p className="flex gap-1 text-xs">
+            <CautionIcon />
+            <span className="text-gray-500">
+              Your order will arive within 2-3 days.
+            </span>
+          </p>
         </div>
+      </div>
+      <div className="space-y-2 pt-4 mb-2 bottom-0 w-full left-full @3xl:w-1/3 sticky self-start ">
+        <Button
+          className="w-full h-12 rounded-none text-md"
+          type="submit"
+          form="checkout-form"
+          onClick={() => setShowOrderSuccess(true)}
+        >
+          Pay {currencyFormatter(7600)}
+        </Button>
       </div>
       <OrderSuccessModal
         isOpen={showOrderSuccess}
         setIsOpen={setShowOrderSuccess}
       />
-    </>
+    </div>
   );
 };
 

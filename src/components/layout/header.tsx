@@ -5,7 +5,7 @@ import {
   MapPinIcon,
   StarIcon,
 } from "@/components/crowdcargo-icons";
-import ReturnPolicyModal from "@/components/home/return-policy-modal";
+import FAQsModal from "@/components/home/faqs-modal";
 import SearchStore from "@/components/layout/search-store";
 import UserPanel from "@/components/layout/user-panel";
 import { Badge } from "@/components/ui/badge";
@@ -47,12 +47,14 @@ const Header = () => {
             <div className="space-y-0.5 text-xs">
               <span className="px-1.5 py-0.5 rounded-md bg-indigo-50 inline-flex gap-2 items-center">
                 4.85{" "}
-                <StarIcon className="size-4 text-yellow-500 fill-yellow-500" />
+                <StarIcon className="size-3 text-yellow-500 fill-yellow-500" />
               </span>
               <h2 className="text-lg leading-5">Oraimo Store</h2>
               <p className="flex gap-1 text-primary items-center">
-                <MapPinIcon className="text-gray-500 size-3" /> 37, Nnobi
-                street, Surulere
+                <MapPinIcon className="text-gray-500 size-3" />{" "}
+                <span className="truncate max-w-40">
+                  37, Nnobi street, Surulere
+                </span>
               </p>
             </div>
           </div>
@@ -88,16 +90,17 @@ const Header = () => {
                 <HeadsetIcon className="size-5" /> Help
               </Link>
             </Button>
-            <ReturnPolicyModal
-              trigger={
-                <Button
-                  className="text-white rounded-2xl flex gap-2 bg-secondary hover:bg-initial"
-                  asChild
-                >
-                  <Link href="#">Return Policy</Link>
-                </Button>
-              }
-            />
+            <Button
+              className="text-white rounded-2xl flex gap-2 bg-secondary hover:bg-initial"
+              asChild
+            >
+              <a
+                href="https://docs.google.com/document/d/1GMId5FFGcojXoerdzOMKOiKMrCkfTk3x/edit?tab=t.0"
+                target="_blank"
+              >
+                Return Policy
+              </a>
+            </Button>
             <button
               type="button"
               className="relative cursor-pointer"

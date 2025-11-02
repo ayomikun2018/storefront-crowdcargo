@@ -50,7 +50,7 @@ const CustomerRatings = () => {
                     <Badge className="text-primary bg-primary/10 text-md rounded-sm px-1">
                       <MessageTextIcon className="!size-4" />
                     </Badge>
-                    <div className="space-y-3">
+                    <div className="space-y-3 grow">
                       <p className="font-semibold">@segun</p>
                       <div className="space-y-2 flex-grow">
                         <p className="">
