@@ -30,7 +30,7 @@ const Header = () => {
   const { toggleSidebar } = useSidebar();
   return (
     <div className="sticky top-0 border-b border-b-gray-100 z-30 bg-background">
-      <header className="2xl:container mx-auto p-3">
+      <header className="mx-auto p-3">
         <nav className="flex  gap-6 items-center justify-between">
           <div className="flex gap-4 items-center">
             <div className="rounded-full p-[0.2rem] inline-block bg-gradient-to-t from-purple-500 to-primary">
