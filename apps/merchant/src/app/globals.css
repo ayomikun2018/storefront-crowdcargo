@@ -1,0 +1,5 @@
+@import "../../../../node_modules/@amplifiedhq/countries-atlas/dist/flags/css/flags.min.css";
+@source "../../node_modules/@repo/ui/src";
+@import "@repo/ui/globals.css";
+@import "tailwindcss";
+@import "tw-animate-css";

@@ -1,0 +1,18 @@
+import { CrowdCargoIconProps } from "../../types";
+
+export function StarIcon(props: CrowdCargoIconProps) {
+  return (
+    <svg
+      width={10}
+      height={10}
+      viewBox="0 0 10 10"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M4.049 1.06c.3-.921 1.603-.921 1.902 0l.396 1.219a1 1 0 00.951.69H8.58c.968 0 1.371 1.24.588 1.81l-1.037.753a1 1 0 00-.364 1.118l.396 1.219c.3.921-.755 1.687-1.538 1.118l-1.037-.753a1 1 0 00-1.176 0l-1.037.753c-.783.57-1.838-.197-1.538-1.118l.396-1.219a1 1 0 00-.364-1.118L.833 4.779c-.784-.57-.381-1.81.587-1.81h1.282a1 1 0 00.95-.69l.397-1.22z" />
+    </svg>
+  );
+}
+
+export default StarIcon;
