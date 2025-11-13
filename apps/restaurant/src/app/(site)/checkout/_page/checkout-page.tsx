@@ -73,7 +73,7 @@ const CheckoutPage = () => {
             </Badge>
           </div>
           <div className="space-y-1 text-gray-500">
-            <h3 className="uppercase font-semibold">Deliver Detail</h3>
+            <h3 className="uppercase font-semibold">Delivery Detail</h3>
             <p className="text-sm">
               Add a delivery address to make sure your items get to the right
               place — fast, safe, and hassle-free.
