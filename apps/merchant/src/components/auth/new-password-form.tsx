@@ -35,11 +35,12 @@ const NewPasswordForm: FC<NewPasswordFormProps> = ({ setActiveForm }) => {
 
   return (
     <>
-      <SheetHeader>
-        <SheetTitle className="text-xl">New Password</SheetTitle>
-        <SheetDescription>Create a new password</SheetDescription>
+      <SheetHeader className="pt-10">
+        <SheetTitle className="text-2xl">New Password</SheetTitle>
+        <p className="text-muted-foreground text-sm">Create a new password</p>
         <hr />
       </SheetHeader>
+
       <div className="space-y-10 px-4">
         <div className="space-y-2">
           <FloatingInput

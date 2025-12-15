@@ -24,6 +24,7 @@ import {
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import AppSidebarAddress from "./app-sidebar-address";
 
 const categories = [
   "Foodstuff",
@@ -133,13 +134,7 @@ export function AppSidebar() {
           </SidebarGroup>
         </SidebarContent>
         <SidebarFooter className="gap-0 p-0">
-          <Alert className="bg-primary/5 text-primary rounded-none">
-            <MapPinIcon className="text-primary size-5!" />
-            <AlertDescription className="text-sm wrap-normal">
-              Delivery Address,{" "}
-              <span className="text-primary">37, Nnobi street, Surulere</span>
-            </AlertDescription>
-          </Alert>
+          <AppSidebarAddress />
         </SidebarFooter>
       </Sidebar>
       <button

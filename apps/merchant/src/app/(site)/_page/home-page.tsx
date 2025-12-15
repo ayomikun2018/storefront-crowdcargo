@@ -105,11 +105,45 @@ const HomePage = ({
           </Tabs>
         </>
       ) : (
-        <div className="space-y-4">
-          <h1 className="flex gap-2 text-xl font-semibold">
-            Search Results{" "}
-            <Badge className="bg-black text-warning">140 Items</Badge>
-          </h1>
+        <div className="">
+          <div>
+            <span className="text-muted-foreground text-sm">
+              Oriamo Stores/ Food
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <h1 className="flex gap-2 text-xl font-semibold">
+              Search Results <span className="text-primary">"Food"</span>
+              <Badge className="bg-black text-warning">140 Items</Badge>
+            </h1>
+            <div className="flex gap-2 justify-end flex-grow">
+              <Select>
+                <SelectTrigger className="w-36 !h-8">
+                  <SelectValue placeholder="All Categories" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Categories</SelectLabel>
+                    <SelectItem value="foodstuff">Foodstuff</SelectItem>
+                    <SelectItem value="school-items">School Items</SelectItem>
+                    <SelectItem value="appliances">Appliances</SelectItem>
+                    <SelectItem value="Gadgets">gadgets</SelectItem>
+                    <SelectItem value="Textbooks">Textbooks</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+              <DropdownMenu>
+                <DropdownMenuTrigger className="flex gap-2 items-center border !bg-white text-gray-500 cursor-pointer h-8 px-2 py-1 rounded-lg text-sm">
+                  Filter <FilterIcon className="size-3.5" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem>Low - High</DropdownMenuItem>
+                  <DropdownMenuItem>High - Low</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </div>
+
           <ProductListings />
         </div>
       )}

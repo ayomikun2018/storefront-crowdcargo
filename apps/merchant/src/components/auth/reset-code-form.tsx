@@ -17,11 +17,12 @@ interface ResetCodeProps {
 const ResetCodeForm: FC<ResetCodeProps> = ({ setActiveForm }) => {
   return (
     <>
-      <SheetHeader>
-        <SheetTitle className="text-xl">Reset Code</SheetTitle>
-        <SheetDescription>
+      <SheetHeader className="pt-10">
+        <SheetTitle className="text-2xl">Reset Code</SheetTitle>
+        <p className="text-muted-foreground text-sm">
+          {" "}
           Please enter the 6 digit code sent to emm******@gmail.com
-        </SheetDescription>
+        </p>
         <hr />
       </SheetHeader>
       <div className="space-y-10 px-4">

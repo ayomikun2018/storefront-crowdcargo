@@ -19,7 +19,7 @@ const ProductListings = () => {
   const [selectedProduct, setSelectedProduct] = useState<any>();
   return (
     <>
-      <div className="flex gap-5  mb-4 items-center border-b pb-2">
+      <div className="flex gap-5  mb-4 items-center border-b pb-2 pt-2">
         <Select defaultValue="prices">
           <SelectTrigger className="p-2 rounded-md !h-8 border-0 w-20 text-xs">
             <SelectValue className="w-28" />

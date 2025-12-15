@@ -19,6 +19,8 @@ import {
 } from "@repo/ui";
 import Image from "next/image";
 import Link from "next/link";
+import { AppSidebar } from "./app-sidebar";
+import HeaderAddress from "./header-address";
 
 const countries = CountriesAtlas.getCountries().filter((each) =>
   ["US", "NG", "GB"].includes(each?.code as string)
@@ -45,7 +47,7 @@ const Header = () => {
             <div className="space-y-0.5 text-xs">
               <Badge className="leading-5">
                 <BellIcon className="size-3.5!" />
-                Resturants
+                Restaurants
               </Badge>
               <p className="text-lg max-w-44 truncate ">Labule FoodCourt</p>
             </div>
@@ -55,17 +57,7 @@ const Header = () => {
             <SearchStore />
           </div>
           <div className="flex gap-4 items-center">
-            <div className="space-y-0.5 ">
-              <p className="flex gap-1 text-sm text-gray-500">
-                <MapPinIcon className="size-4" /> Delivery Address
-              </p>
-              <p className="text-primary flex gap-1 items-center text-sm">
-                <span className="max-w-40 truncate">
-                  37, Nnobi street, Surulere
-                </span>
-                <EditIcon className="size-4" />
-              </p>
-            </div>
+            <HeaderAddress />
             <Button
               className="text-white rounded-2xl flex gap-2 bg-green-600 hover:bg-initial"
               asChild

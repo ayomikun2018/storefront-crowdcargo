@@ -36,3 +36,4 @@ export * from "./star-icon";
 export * from "./store-icon";
 export * from "./truck-icon";
 export * from "./x-circle-icon";
+export * from "./user-icon";

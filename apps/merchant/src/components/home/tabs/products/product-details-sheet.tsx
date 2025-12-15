@@ -137,7 +137,7 @@ const ProductDetailsSheet: FC<ProductDetailsSheetProps> = ({
               type="single"
               collapsible
               className="w-full"
-              defaultValue="product-information"
+              // defaultValue="product-information"
             >
               <AccordionItem value="product-information">
                 <AccordionTrigger className={ACCORDION_CLASS}>

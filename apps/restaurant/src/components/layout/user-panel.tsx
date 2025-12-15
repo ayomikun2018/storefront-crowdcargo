@@ -10,6 +10,7 @@ import {
 import { ChevronDown, UserIcon } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
+import LogInSheet from "../auth/auth-sheet";
 
 const UserPanel = () => {
   const [showLogInSheet, setShowLogInSheet] = useState(false);
@@ -47,6 +48,7 @@ const UserPanel = () => {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+      <LogInSheet isOpen={showLogInSheet} setIsOpen={setShowLogInSheet} />
     </>
   );
 };
