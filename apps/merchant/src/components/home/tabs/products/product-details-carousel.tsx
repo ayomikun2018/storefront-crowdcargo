@@ -11,10 +11,12 @@ import React, { FC } from "react";
 
 interface ProductDetailsCarouselProps {
   images: string[];
+  outOfStock?: boolean;
 }
-const ProductDetailsCarousel: FC<ProductDetailsCarouselProps> = ({
+const ProductDetailsCarousel = ({
   images,
-}) => {
+  outOfStock,
+}: ProductDetailsCarouselProps) => {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const handleIndicatorClick = (index: number) => {
@@ -34,7 +36,7 @@ const ProductDetailsCarousel: FC<ProductDetailsCarouselProps> = ({
     });
   }, [api]);
   return (
-    <div className="grid grid-cols-4 h-64 gap-2">
+    <div className="grid grid-cols-4 h-64 gap-2 ">
       <div className="col-span-3">
         <Carousel
           setApi={setApi}
@@ -44,14 +46,25 @@ const ProductDetailsCarousel: FC<ProductDetailsCarouselProps> = ({
         >
           <CarouselContent>
             {images.map((each, index) => (
-              <CarouselItem className="" key={index}>
-                <Image
-                  src={each}
-                  alt={`product image ${1}`}
-                  height={400}
-                  width={400}
-                  className="border border-gray-300 rounded-lg object-full w-full h-64 object-center"
-                />
+              <CarouselItem key={index}>
+                <div className="relative w-full h-64 rounded-lg overflow-hidden border border-gray-300">
+                  <Image
+                    src={each}
+                    alt={`product image ${index}`}
+                    height={400}
+                    width={400}
+                    className={cn(
+                      "w-full h-full object-contain",
+                      outOfStock && "opacity-80",
+                    )}
+                  />
+
+                  {outOfStock && (
+                    <div className="absolute bottom-0 left-0 right-0 bg-[#B42318CC] text-white text-sm text-center py-2 font-medium rounded-b-lg">
+                      Out of Stock
+                    </div>
+                  )}
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -84,7 +97,7 @@ const ProductDetailsCarousel: FC<ProductDetailsCarouselProps> = ({
               type="button"
               className={cn(
                 "w-full overflow-hidden cursor-pointer rounded-lg",
-                current == index && "border-2 border-primary"
+                current == index && "border-2 border-primary",
               )}
               onClick={() => handleIndicatorClick(index)}
             >

@@ -11,15 +11,15 @@ import Image from "next/image";
 
 const CustomerRatings = () => {
   return (
-    <div className="bg-secondary p-5 bg-no-repeat bg-top-right text-white bg-[url(/assets/ratings.svg)] bg-right">
-      <div className="space-y-4 w-6/7 border-r border-gray-700 pr-16">
+    <div className="bg-secondary p-5 bg-no-repeat bg-top-right text-white md:bg-[url(/assets/ratings.svg)] bg-right">
+      <div className="space-y-4 md:w-6/7 border-r border-gray-700 md:pr-16">
         <div className="relative rounded-lg bg-gradient-to-r from-blue-700 via-60% to-blue-500 text-white">
-          <div className="px-4 py-6 flex justify-between items-center bg-[url(/assets/customer-ratings-illustration.png)] bg-contain bg-no-repeat bg-right">
+          <div className="px-4 py-6 flex justify-between items-center md:bg-[url(/assets/customer-ratings-illustration.png)] bg-[url(/assets/customer-rating-illustration-mobile.svg)] bg-contain bg-no-repeat bg-right">
             <div className="space-y-3">
               <h2 className="text-2xl font-semibold">Store Ratings</h2>
               <div className="flex gap-2">
                 <span className="flex gap-2 items-center text-lg font-semibold">
-                  4.85 <StarIcon className="fill-warning size-4" />
+                  4.85 <StarIcon className="fill-yellow-400 size-4" />
                 </span>
                 <Badge className="bg-white/10">543 Ratings</Badge>
               </div>
@@ -30,7 +30,7 @@ const CustomerRatings = () => {
           {[5, 4, 3, 2, 1].map((each) => (
             <div key={each} className="flex gap-3 items-center">
               <span className="flex gap-1 items-center">
-                {each}.0 <StarIcon className="fill-warning size-4" />
+                {each}.0 <StarIcon className="fill-yellow-400 size-4" />
               </span>
               <Progress value={15 * each} className="h-4" />
               <span>298</span>
@@ -89,7 +89,7 @@ const CustomerRatings = () => {
                             24 Dec 2025, 14:00
                           </span>
                           <span className="inline-flex gap-0.5 items-center">
-                            5.0 <StarIcon className="fill-warning size-2.5" />
+                            5.0 <StarIcon className="fill-yellow-400 size-2.5" />
                           </span>
                         </div>
                       </div>

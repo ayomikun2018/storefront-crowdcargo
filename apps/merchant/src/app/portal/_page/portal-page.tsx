@@ -18,7 +18,7 @@ const PortalPage: FC<PortalPageProps> = ({ searchParams }) => {
   const TAB_CLASS =
     "text-lg text-gray-600 data-[state=active]:border-b-2 data-[state=active]:border-b-primary data-[state=active]:text-foreground rounded-none !bg-transparent flex-none !shadow-none cursor-pointer !border-r data-[state=active]:font-semibold";
   return (
-    <div className="max-w-7xl p-5">
+    <div className="max-w-8xl p-5">
       <Tabs className="w-full" onValueChange={setActiveTab} value={activeTab}>
         <TabsList className="bg-transparent border-b border-b-gray-200 rounded-none w-full justify-start py-1 h-auto gap-4 overflow-auto min-w-full max-w-0 z-30">
           <Link href="/" className="pr-2 border-r">

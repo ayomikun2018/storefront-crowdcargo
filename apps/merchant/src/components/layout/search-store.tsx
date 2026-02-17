@@ -16,12 +16,12 @@ import { useState } from "react";
 const SearchStore = () => {
   const [showPopover, setShowPopover] = useState(false);
   return (
-    <div className="relative w-full">
+    <div className="relative w-full  ">
       <SearchIcon className="absolute inset-y-3.5 left-3 size-4" />
       <Input
-        placeholder="Search"
+        placeholder="Search Oriamo Store"
         type="text"
-        className="peer w-full h-11 py-3 rounded-3xl outline-none pl-9 bg-gray-100 text-foreground"
+        className="peer w-full h-11 py-3 md:rounded-3xl  rounded-full outline-none pl-9 bg-gray-100 text-foreground"
         onBlur={() => setShowPopover(false)}
       />
       <div

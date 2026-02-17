@@ -8,6 +8,7 @@ import {
 import { HeadsetIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import ReturnPolicyModal from "../home/return-policy-modal";
 
 const Footer = () => {
   return (
@@ -53,20 +54,16 @@ const Footer = () => {
             FAQs
           </Button>
 
-          <Button
-            className="flex gap-2 items-center justify-start text-primary p-1 px-1/5 bg-gray-600/10 hover:bg-initial"
-            asChild
-          >
-            <a
-              href="https://docs.google.com/document/d/1GMId5FFGcojXoerdzOMKOiKMrCkfTk3x/edit?tab=t.0"
-              target="_blank"
-            >
-              <span className="bg-primary text-white p-1 rounded">
-                <JudgeIcon className="size-4" />
-              </span>
-              Return Policy
-            </a>
-          </Button>
+          <ReturnPolicyModal
+            trigger={
+              <Button className="flex gap-2 items-center justify-start text-primary p-1 px-1/5 bg-gray-600/10 hover:bg-initial">
+                <span className="bg-primary text-white p-1 rounded">
+                  <JudgeIcon className="size-4" />
+                </span>
+                Return Policy
+              </Button>
+            }
+          />
 
           <Button
             className="flex gap-2 items-center justify-start text-primary p-1 px-1/5 bg-gray-600/10 hover:bg-initial"

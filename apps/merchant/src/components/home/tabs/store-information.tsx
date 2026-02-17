@@ -4,12 +4,12 @@ import { Badge, ClockIcon, TruckIcon } from "@repo/ui";
 const StoreInformation = () => {
   return (
     <>
-      <div className="bg-secondary p-5 border-8 border-primary bg-[url(/assets/icon-collage.svg)] bg-no-repeat bg-top-right">
-        <div className="space-y-4 w-4/5">
+      <div className="bg-secondary p-5 border-8 border-primary md:bg-[url(/assets/icon-collage.svg)] bg-no-repeat bg-top-right">
+        <div className="space-y-4 md:w-4/5">
           <div className="rounded-lg bg-gradient-to-r from-blue-700 via-60% to-blue-500 text-white">
-            <div className="p-4 bg-[url(/assets/hand-with-light-bulb.svg)] bg-no-repeat bg-right space-y-3">
+            <div className="p-4 md:bg-[url(/assets/hand-with-light-bulb.svg)] bg-no-repeat bg-right space-y-3 font-semibold md:font-base">
               <h2 className="text-xl">About {`{{Store_Name}}`}</h2>
-              <p className="text-sm leading-4">
+              <p className="md:text-sm md:leading-4">
                 <span className="text-yellow-500">Oraimo Store</span> are within
                 a 60KM radius of your location. Each store card shows the exact
                 distance, making it easier for you to shop nearby and get what
@@ -18,23 +18,29 @@ const StoreInformation = () => {
             </div>
           </div>
 
-          <div className="p-2 bg-indigo-900/30 flex gap-4 justify-between">
+          <div className="p-2 bg-indigo-900/30 md:flex gap-4 md:justify-between rounded-lg">
             <div className="flex gap-3 items-center text-gray-500 flex-1">
-              <span className="uppercase text-xs block">Delivery Schedule</span>
-              <hr className="flex-grow border-gray-700" />
+              <span className="uppercase text-xs block font-semibold md:font-normal pb-3  ">Delivery Schedule</span>
+              <hr className="flex-grow border-gray-700 hidden md:block" />
             </div>
             <div className="space-y-3">
-              <Badge className="w-full justify-start flex gap-2 text-xs">
+              <Badge className="w-full justify-start flex gap-2 text-xs  font-semibold md:font-normal">
                 <span className="rounded p-1 bg-white/20">
                   <TruckIcon className="size-3.5" />
                 </span>
                 We do Local & Inter State Delivery
               </Badge>
-              <Badge className="w-full justify-start flex gap-2">
+              <Badge className="w-full justify-start flex gap-2  font-semibold md:font-normal">
                 <span className="rounded p-1 bg-white/20">
                   <ClockIcon className="size-3.5" />
                 </span>
                 2-3 business days
+              </Badge>
+              <Badge className="w-full justify-start flex gap-2  font-semibold md:font-normal">
+                <span className="rounded p-1 bg-white/20">
+                  <ClockIcon className="size-3.5" />
+                </span>
+             Inter State Delivery: 5-7 business days
               </Badge>
             </div>
           </div>
