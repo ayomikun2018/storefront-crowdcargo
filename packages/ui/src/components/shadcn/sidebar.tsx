@@ -156,6 +156,7 @@ function Sidebar({
   collapsible = "offcanvas",
   className,
   children,
+
   ...props
 }: React.ComponentProps<"div"> & {
   side?: "left" | "right";

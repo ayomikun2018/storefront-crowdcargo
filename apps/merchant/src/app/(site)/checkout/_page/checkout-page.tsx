@@ -69,7 +69,7 @@ const CheckoutPage = () => {
 
   return (
     <div className="relative @container">
-      <div className="flex flex-wrap gap-6">
+      <div className="flex gap-6 items-start">
         <div className="space-y-4 md:flex-2">
           <div className="flex justify-between py-4 border-b border-gray-200">
             <h2 className="inline-flex gap-2 items-center text-2xl font-semibold">
@@ -96,14 +96,25 @@ const CheckoutPage = () => {
             </Badge>
           </div>
 
-          <div className="space-y-1 text-gray-500">
-            <h3 className="uppercase font-semibold">Delivery Detail</h3>
-            <p className="text-sm">
-              Add a delivery address to make sure your items get to the right
-              place — fast, safe, and hassle-free.
-            </p>
+          <div className="flex justify-between">
+            <div className="space-y-1 text-gray-500">
+              <h3 className="uppercase font-semibold">Delivery Detail</h3>
+              <p className="text-sm">
+                Add a delivery address to make sure your items get to the right
+                place — fast, safe, and hassle-free.
+              </p>
+            </div>
+            <div>
+              {" "}
+              <Button
+                onClick={handleSave}
+                className="h-12  bg-primary text-white px-8 rounded-xl "
+                disabled={!formik.isValid}
+              >
+                {isSaved ? "Edit" : "Save"}
+              </Button>
+            </div>
           </div>
-
           <form className="grid md:grid-cols-2 gap-4" id="checkout-form">
             <FloatingInput
               formik={formik}
@@ -177,14 +188,6 @@ const CheckoutPage = () => {
             />
           </form>
 
-          <Button
-            onClick={handleSave}
-            className="w-1/2 h-12 mt-2 bg-primary text-white border-3 border-secondary"
-            disabled={!formik.isValid}
-          >
-            {isSaved ? "Edit" : "Save"}
-          </Button>
-
           <Badge className="bg-gradient-to-r from-yellow-700 to-yellow-400 w-full flex gap-2 justify-start text-sm">
             <CautionIcon className="!size-4" />
             This is an inter state delivery. This vendor is based in Lagos
@@ -205,16 +208,16 @@ const CheckoutPage = () => {
           </div>
         </div>
 
-        <div className="space-y-4 md:flex-1 min-w-56 block overflow-visible">
+        <div className="md:flex-1 min-w-56 space-y-4 sticky top-6 self-start">
           <div className="flex flex-col justify-between py-4 border-b border-gray-200">
-            <Tabs defaultValue="delivery" className="w-full">
-              <TabsList className="flex justify-between gap-2 p-0 w-full bg-transparent">
+            <Tabs defaultValue="delivery" className="w-full ">
+              <TabsList className="flex justify-between gap-2  h-12 w-full bg-transparent ">
                 <span>
                   <h2 className="text-2xl font-semibold text-gray-500">
                     Delivery Method
                   </h2>
                 </span>
-                <div className="flex self-end justify-end bg-blue-100 p-1 rounded-2xl w-1/2 gap-2">
+                <div className="flex self-end justify-end bg-blue-100 p-1 rounded-2xl w-auto gap-2">
                   <TabsTrigger
                     value="delivery"
                     className="flex gap-1 rounded-3xl px-2 h-8 text-sm border border-transparent text-muted-foreground data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:border-2 data-[state=active]:border-secondary"
@@ -307,6 +310,7 @@ const CheckoutPage = () => {
               <span>{currencyFormatter(0)}</span>
             </div>
           </div>
+
           {/* <FloatingInput
             formik={formik}
             name="promoCode"
@@ -362,19 +366,17 @@ const CheckoutPage = () => {
       </div>
 
       <div className="space-y-2 pt-4 mb-2 bottom-0 w-full left-full @3xl:w-1/3 sticky self-start">
-        <Button
-          className="w-full h-12 rounded-none text-md"
-          type="button"
-          onClick={() => setShowOrderSuccess(true)}
-        >
-          Pay {currencyFormatter(7600)}
-        </Button>
+        <Link href="/checkout/checkout-success">
+          <Button className="w-full h-12 rounded-none text-md" type="button">
+            Pay {currencyFormatter(7600)}
+          </Button>
+        </Link>
       </div>
 
-      <OrderSuccessModal
+      {/* <OrderSuccessModal
         isOpen={showOrderSuccess}
         setIsOpen={setShowOrderSuccess}
-      />
+      /> */}
     </div>
   );
 };

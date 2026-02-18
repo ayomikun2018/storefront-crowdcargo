@@ -78,7 +78,7 @@ const collectionItems = [
 ];
 
 export function AppSidebar() {
-  const { open, toggleSidebar, setOpen } = useAppSidebar();
+  const { open, setOpen } = useAppSidebar();
   const { intersectionData } = useFooterIntersect();
   const pathname = usePathname();
   useEffect(() => {
@@ -272,7 +272,6 @@ export function AppSidebar() {
               </section>
             </Link>
           </SidebarGroup>
-        
 
           <Link href="/collection">
             <SidebarGroup className="space-y-6  md:border-gray-100  hidden md:block">

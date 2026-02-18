@@ -3,6 +3,7 @@
 import { MenuIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAppSidebar } from "../layout/app-sidebar-context";
+import { useState } from "react";
 
 type SidebarToggleButtonProps = {
   variant?: "floating" | "header";
@@ -12,6 +13,7 @@ const SidebarToggleButton = ({
   variant = "header",
 }: SidebarToggleButtonProps) => {
   const { open, toggleSidebar } = useAppSidebar();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   if (variant === "floating") {
     return (
@@ -19,7 +21,6 @@ const SidebarToggleButton = ({
         type="button"
         onClick={toggleSidebar}
         className={cn(
-        
           "fixed top-[6.7rem] h-44 rounded-r-lg pt-2 pb-5  ",
           "text-gray-600 flex flex-col justify-between items-center",
           "bg-gray-100 cursor-pointer transition-all duration-300",
@@ -36,7 +37,7 @@ const SidebarToggleButton = ({
   return (
     <button
       type="button"
-      onClick={toggleSidebar}
+      onClick={() => setMenuOpen((prev) => !prev)}
       className="md:hidden flex justify-between items-center self-center cursor-pointer text-gray-600 h-10"
     >
       <MenuIcon className="" size={20} />
