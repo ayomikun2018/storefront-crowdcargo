@@ -7,7 +7,7 @@ type CollectionItemProps = {
   onClick?: () => void;
 };
 
-export const CollectionRow = ({
+export const SidebarCollectionRow = ({
   title,
   icon,
   onClick,
@@ -17,8 +17,9 @@ export const CollectionRow = ({
       onClick={onClick}
       className="
   w-full flex items-center justify-between
-  border-[3px] border-[#1b144f]
-  rounded-2xl
+  border-y-[3px] border-y-[#1b144f]
+  rounded-xl
+  h-13
   bg-[url('/assets/collection-bg.svg')] bg-cover bg-center
   px-4 py-3
 "
@@ -37,8 +38,8 @@ export const CollectionRow = ({
       </div>
 
       {/* RIGHT */}
-      <div className="bg-primary text-white rounded-2xl w-12 h-6 flex items-center justify-center">
-        <ArrowRight size={18} />
+      <div className="bg-primary text-white rounded-2xl w-7 h-5 flex items-center justify-center">
+        <ArrowRight size={15} />
       </div>
     </button>
   );

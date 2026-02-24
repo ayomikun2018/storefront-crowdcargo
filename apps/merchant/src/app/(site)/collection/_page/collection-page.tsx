@@ -13,6 +13,9 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
   Select,
   SelectContent,
   SelectGroup,
@@ -74,6 +77,32 @@ const banners = [
     badgeBackgroundColor: "bg-black",
   },
 ];
+const collections = [
+  {
+    id: 1,
+    title: "Fashionista",
+    items: 25,
+    image: "/assets/collection-detail-banner-two.svg",
+  },
+  {
+    id: 2,
+    title: "Fashionista",
+    items: 25,
+    image: "/assets/collection-detail-banner-two.svg",
+  },
+  {
+    id: 3,
+    title: "Fashionista",
+    items: 25,
+    image: "/assets/collection-detail-banner-two.svg",
+  },
+  {
+    id: 4,
+    title: "Fashionista",
+    items: 25,
+    image: "/assets/collection-detail-banner-two.svg",
+  },
+];
 
 const CollectionPage: FC<PortalPageProps> = () => {
   const [mobileView, setMobileView] = useState<MobileView>("collections");
@@ -91,19 +120,9 @@ const CollectionPage: FC<PortalPageProps> = () => {
         )}
 
         {mobileView === "details" && (
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <MobileCollectionDetails
-                onBack={() => setMobileView("collections")}
-              />
-            </TooltipTrigger>
-            <TooltipContent>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet
-              amet, magnam perferendis dolorum sed iusto repellendus culpa
-              provident officiis excepturi illo necessitatibus, consectetur
-              minus. Debitis aliquid deserunt qui corrupti necessitatibus.
-            </TooltipContent>
-          </Tooltip>
+          <MobileCollectionDetails
+            onBack={() => setMobileView("collections")}
+          />
         )}
       </div>
     </div>
@@ -163,21 +182,47 @@ const DesktopTopBar = () => {
 
 const MobileCollectionList = ({ onSelect }: { onSelect: () => void }) => {
   return (
-    <section className="w-full flex flex-col gap-2">
+    <section className="w-full flex flex-col gap-1">
       <CollectionBanner />
+      <hr className="border-gray-300 my-2" />
 
-      {banners.map((banner, index) => (
-        <div
-          key={index}
-          onClick={onSelect}
-          className="cursor-pointer"
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => e.key === "Enter" && onSelect()}
-        >
-          <HomeCollectionBanner {...banner} />
-        </div>
-      ))}
+      <div className="space-y-3">
+        {collections.map((collection, index) => (
+          <div
+            key={collection.id}
+            className="relative flex items-center justify-between rounded-xl border-4 border-secondary overflow-hidden bg-muted px-3 py-4 md:p-10"
+          >
+            <div className="flex flex-col gap-3 max-w-lg">
+              <h2 className="text-xl md:text-2xl font-semibold">
+                {collection.title}
+              </h2>
+
+              <Badge className="bg-secondary text-white w-fit">
+                {collection.items} Items
+              </Badge>
+
+              <Button
+                variant="outline"
+                className="w-fit bg-primary text-white font-semibold text-xs"
+                onClick={() => onSelect()}
+              >
+                Shop Now
+              </Button>
+            </div>
+
+            <div className="flex-shrink-0">
+              <Image
+                src={collection.image}
+                alt={collection.title}
+                width={200}
+                height={200}
+                className="w-auto h-auto max-h-40 md:max-h-56"
+                priority={index === 0}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };
@@ -185,54 +230,48 @@ const MobileCollectionList = ({ onSelect }: { onSelect: () => void }) => {
 const MobileCollectionDetails = ({ onBack }: { onBack: () => void }) => {
   return (
     <>
-      <div className="flex items-center gap-2 mb-1">
-        <Button variant="ghost" onClick={onBack}>
-          <ArrowLeft className="size-4" />
-        </Button>
-        <p className="text-sm text-gray-600">
-          Oriamo Store / Collections / Winters Wear
-        </p>
-      </div>
-      <div className="w-full">
-        <div
-          className="
-      relative
-      flex
-      mb-2
-      items-stretch
-      rounded-3xl
-      overflow-hidden
-      bg-no-repeat bg-cover
-      bg-[url('/assets/collection-detail-bg.svg')]
-      min-h-[120px]
-    "
-        >
-          <div className="flex flex-col justify-between px-6 md:px-10 py-6 w-2/3">
-            <div>
-              <Badge className="bg-secondary text-white mb-4">25 Items</Badge>
+      <div className="mb-2">
+        <div className="relative flex items-center justify-between rounded-xl bg-muted p-4 md:p-10 border-4 border-secondary">
+          {/* LEFT CONTENT */}
 
-              <h2 className="text-xl md:text-2xl font-semibold mb-3">
-                Fashionista
-              </h2>
+          <div className="flex flex-col justify-between gap-3 max-w-lg">
+            <Badge className="bg-secondary text-white w-fit">25 Items</Badge>
 
-              <p className="text-sm md:text-base text-muted-foreground max-w-md">
-                Viverra sapien ut elit lorem elementum in faucibus nec
-                tincidunt.
-              </p>
-            </div>
+            <h2 className="text-xl md:text-2xl font-semibold">Fashionista</h2>
+            <Popover>
+              <PopoverTrigger asChild>
+                <p className="text-sm md:text-base text-muted-foreground">
+                  Viverra sapien ut elit lorem elementum in faucibus nec
+                  tincid...
+                </p>
+              </PopoverTrigger>
+
+              <PopoverContent className="w-60 p-3 mt-3">
+                <div className="space-y-1 rounded p-1">
+                  <p className="text-sm">
+                    Ornare turpis enim ullamcorper platea adipiscing. Tincidunt
+                    lorem id est enim diam varius. Lacus mattis tellus pulvinar
+                    laoreet sed. Egestas.
+                  </p>
+                </div>
+              </PopoverContent>
+            </Popover>
           </div>
 
-          <div className="flex items-center justify-end w-1/3 pr-4">
+          {/* RIGHT IMAGE */}
+          <div className="flex-shrink-0">
             <Image
               src="/assets/collection-detail-banner-two.svg"
               alt="Fashion item"
-              height={200}
               width={200}
-              className="h-full"
+              height={200}
+              className="w-auto h-auto max-h-40 md:max-h-56"
+              priority
             />
           </div>
         </div>
       </div>
+
       <hr className="border-t border-gray-300 mt-2 mb-4" />
 
       <ProductListings />

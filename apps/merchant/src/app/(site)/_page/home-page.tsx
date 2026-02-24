@@ -9,6 +9,7 @@ import ProductViewedRecently from "@/components/home/tabs/products/product-viewe
 import StoreInformation from "@/components/home/tabs/store-information";
 import AppViewedRecently from "@/components/layout/app-viewed-recently";
 import SearchStore from "@/components/layout/search-store";
+import { useBreakpoint } from "@/hooks/use-breakpoint";
 import {
   Badge,
   Button,
@@ -17,6 +18,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
   FilterIcon,
+  Input,
   PriceTagIcon,
   Select,
   SelectContent,
@@ -31,6 +33,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@repo/ui";
+import { ChevronDownIcon } from "lucide-react";
 import Link from "next/link";
 
 // text-xs text-gray-600 data-[state=active]:border-b-2 data-[state=active]:border-b-primary data-[state=active]:text-foreground rounded-none !bg-transparent flex-none !shadow-none cursor-pointer px-0 uppercase
@@ -39,6 +42,7 @@ const HomePage = ({
 }: {
   searchParams: Record<string, string | undefined>;
 }) => {
+  const { isMobile } = useBreakpoint();
   const { search } = searchParams;
   const TAB_CLASS =
     "text-xs text-gray-600 data-[state=active]:border-b-2 data-[state=active]:border-b-primary data-[state=active]:text-foreground rounded-none !bg-transparent flex-none !shadow-none cursor-pointer px-0 uppercase";
@@ -210,7 +214,7 @@ const HomePage = ({
                     </Badge>
                   </div>
                 </Link>
-                <TabsTrigger
+                {/* <TabsTrigger
                   value="store-information"
                   className={MOBILE_TAB_CLASS}
                 >
@@ -227,7 +231,7 @@ const HomePage = ({
                   className={MOBILE_TAB_CLASS}
                 >
                   Customer Reviews
-                </TabsTrigger>
+                </TabsTrigger> */}
                 <div className="md:flex  hidden gap-2 justify-end  flex-grow ">
                   <Select>
                     <SelectTrigger className="w-36 !h-8">
@@ -286,19 +290,19 @@ const HomePage = ({
         </>
       ) : (
         <div className="">
-          <div>
-            <span className="text-muted-foreground text-sm">
-              Oriamo Stores/ Food
-            </span>
-          </div>
-          <div className="flex justify-between">
-            <h1 className="flex gap-2 text-xl font-semibold">
-              Search Results <span className="text-primary">"Food"</span>
-              <Badge className="bg-black text-warning">140 Items</Badge>
-            </h1>
-            <div className="flex gap-2 justify-end flex-grow">
-              <Select>
-                <SelectTrigger className="w-36 !h-8">
+          <Input
+            autoFocus
+            placeholder="Search Oriamo Store"
+            className="flex-1 rounded-full bg-gray-100 ring-1 ring-primary mt-1 mb-4 md:hidden"
+          />
+          {isMobile && (
+            <div className="flex justify-between items-center border-y py-1">
+              <span className="text-sm">
+                5 Results for{" "}
+                <span className="text-primary font-semibold">"Phone"</span>
+              </span>
+              {/* <Select>
+                <SelectTrigger className="w-2/4 !h-8">
                   <SelectValue placeholder="All Categories" />
                 </SelectTrigger>
                 <SelectContent>
@@ -312,20 +316,92 @@ const HomePage = ({
                   </SelectGroup>
                 </SelectContent>
               </Select>
+
               <DropdownMenu>
-                <DropdownMenuTrigger className="flex gap-2 items-center border !bg-white text-gray-500 cursor-pointer h-8 px-2 py-1 rounded-lg text-sm">
-                  Filter <FilterIcon className="size-3.5" />
+                <DropdownMenuTrigger className=" w-1/3 flex gap-2 items-center border !bg-white text-gray-500 cursor-pointer h-8 px-2 py-1 rounded-lg text-sm">
+                  <FilterIcon className="size-3.5" /> Filter{" "}
+                  <ChevronDownIcon className="size-4 text-gray-300" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuItem>Low - High</DropdownMenuItem>
                   <DropdownMenuItem>High - Low</DropdownMenuItem>
                 </DropdownMenuContent>
-              </DropdownMenu>
+              </DropdownMenu> */}
+              <div className="flex gap-2 justify-end flex-grow">
+                <Select>
+                  <SelectTrigger className="w-36 !h-8">
+                    <SelectValue placeholder="All Categories" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectLabel>Categories</SelectLabel>
+                      <SelectItem value="foodstuff">Foodstuff</SelectItem>
+                      <SelectItem value="school-items">School Items</SelectItem>
+                      <SelectItem value="appliances">Appliances</SelectItem>
+                      <SelectItem value="Gadgets">gadgets</SelectItem>
+                      <SelectItem value="Textbooks">Textbooks</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="flex gap-2 items-center border !bg-white text-gray-500 cursor-pointer h-8 px-2 py-1 rounded-lg text-sm">
+                    Filter <FilterIcon className="size-3.5" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DropdownMenuItem>Low - High</DropdownMenuItem>
+                    <DropdownMenuItem>High - Low</DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
             </div>
-          </div>
+          )}
+          {!isMobile && (
+            <>
+              <div>
+                <span className="text-muted-foreground text-sm">
+                  Oriamo Stores/ Food
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <h1 className="flex gap-2 text-xl font-semibold">
+                  Search Results <span className="text-primary">"Food"</span>
+                  <Badge className="bg-black text-warning">140 Items</Badge>
+                </h1>
+                <div className="md:flex gap-2 justify-end md:grow hidden">
+                  <Select>
+                    <SelectTrigger className="w-36 h-8!">
+                      <SelectValue placeholder="All Categories" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectLabel>Categories</SelectLabel>
+                        <SelectItem value="foodstuff">Foodstuff</SelectItem>
+                        <SelectItem value="school-items">
+                          School Items
+                        </SelectItem>
+                        <SelectItem value="appliances">Appliances</SelectItem>
+                        <SelectItem value="Gadgets">gadgets</SelectItem>
+                        <SelectItem value="Textbooks">Textbooks</SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger className="flex gap-2 items-center border bg-white! text-gray-500 cursor-pointer h-8 px-2 py-1 rounded-lg text-sm">
+                      Filter <FilterIcon className="size-3.5" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuItem>Low - High</DropdownMenuItem>
+                      <DropdownMenuItem>High - Low</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+              </div>
+            </>
+          )}
 
-          <ProductListings />
-          <AppViewedRecently />
+          <ProductListings search={search} />
+
+          {/* <AppViewedRecently /> */}
         </div>
       )}
     </div>

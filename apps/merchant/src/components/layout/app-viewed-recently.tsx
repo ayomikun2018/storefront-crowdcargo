@@ -11,7 +11,7 @@ const AppViewedRecently = () => {
   const [selectedProduct, setSelectedProduct] = useState<any>();
   return (
     <div>
-      <div className="bg-blue-50 px-4 py-8 md:hidden ">
+      <div className="bg-blue-50 px-4 py-8 hidden">
         <p className="font-semibold text-xl">Viewed Recently</p>
         <div className="py-5">
           <div

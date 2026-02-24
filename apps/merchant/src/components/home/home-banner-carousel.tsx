@@ -13,6 +13,7 @@ import {
   PriceTagIcon,
   StoreIcon,
 } from "@repo/ui";
+import { FlagIcon } from "lucide-react";
 import React from "react";
 
 const HomeBannerCarousel = () => {
@@ -49,10 +50,13 @@ const HomeBannerCarousel = () => {
               <div className="flex justify-between absolute top-0 left-0 p-3 w-full text-sm">
                 <div className="flex gap-3">
                   <Button className="flex gap-2 items-center p-1 !px-1.5 text-xs h-5 rounded-sm">
-                    <StoreIcon className="w-4" />
+                    <>
+                      <FlagIcon className="w-4 md:hidden block" />
+                      <StoreIcon className="w-4 hidden md:block" />
+                    </>
                     Fashion Store
                   </Button>
-                  <Button className="gap-2 items-center p-1 !px-1.5 text-xs h-5 rounded-sm !bg-white text-foreground hidden md:flex">
+                  <Button className="gap-2 items-center p-1 !px-1.5 text-xs h-5 rounded-sm !bg-white text-foreground  md:flex">
                     <CarIcon className="w-4" />
                     We are 5mins away
                   </Button>

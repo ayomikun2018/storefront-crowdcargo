@@ -20,7 +20,9 @@ const StoreInformation = () => {
 
           <div className="p-2 bg-indigo-900/30 md:flex gap-4 md:justify-between rounded-lg">
             <div className="flex gap-3 items-center text-gray-500 flex-1">
-              <span className="uppercase text-xs block font-semibold md:font-normal pb-3  ">Delivery Schedule</span>
+              <span className="uppercase text-xs block font-semibold md:font-normal pb-3  ">
+                Delivery Schedule
+              </span>
               <hr className="flex-grow border-gray-700 hidden md:block" />
             </div>
             <div className="space-y-3">
@@ -40,11 +42,11 @@ const StoreInformation = () => {
                 <span className="rounded p-1 bg-white/20">
                   <ClockIcon className="size-3.5" />
                 </span>
-             Inter State Delivery: 5-7 business days
+                Inter State Delivery: 5-7 business days
               </Badge>
             </div>
           </div>
-          <div className="p-2 bg-indigo-900/30 @container">
+          <div className="p-2 rounded-md bg-indigo-900/30 @container">
             <div
               className={`flex gap-y-5 w-full flex-wrap @lg:divide-x divide-gray-700`}
             >
@@ -74,7 +76,7 @@ const StoreInformation = () => {
                   </div>
                   <div className="items-center gap-2 grid grid-cols-3">
                     <span>Friday</span> <hr className="border-gray-700" />{" "}
-                    <span>6:00am - 9:00pm</span>
+                    <span className="">6:00am - 9:00pm</span>
                   </div>
                 </div>
               </div>

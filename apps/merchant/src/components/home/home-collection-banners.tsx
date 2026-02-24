@@ -39,7 +39,7 @@ const HomeCollectionBanners = () => {
   ];
 
   return (
-    <section className="w-full overflow-hidden">
+    <section className="w-full overflow-hidden  ">
       <div
         className="
           flex
@@ -47,7 +47,7 @@ const HomeCollectionBanners = () => {
           overflow-x-auto
           scroll-smooth
           no-scrollbar
-          
+         
         "
       >
         {banners.map((banner, index) => (

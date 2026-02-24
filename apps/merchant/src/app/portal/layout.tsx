@@ -1,8 +1,7 @@
-import { AppSidebar } from "@/components/layout/app-sidebar";
-import { CartSidebar } from "@/components/layout/cart-sidebar";
+import AppSidebar from "@/components/layout/(sidebar)/app-sidebar";
+import CartSidebar from "@/components/layout/(sidebar)/cart-sidebar";
 import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
-import UserSidebar from "@/components/layout/user-sidebar";
 import { SidebarProvider } from "@repo/ui";
 import type { FC, ReactNode } from "react";
 

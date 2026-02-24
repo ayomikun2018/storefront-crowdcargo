@@ -1,8 +1,7 @@
 import ProductViewedRecently from "@/components/home/tabs/products/product-viewed-recently";
-import { AppSidebar } from "@/components/layout/app-sidebar";
-import { AppSidebarProvider } from "@/components/layout/app-sidebar-context";
+import AppSidebar from "@/components/layout/(sidebar)/app-sidebar";
+import CartSidebar from "@/components/layout/(sidebar)/cart-sidebar";
 import AppViewedRecently from "@/components/layout/app-viewed-recently";
-import { CartSidebar } from "@/components/layout/cart-sidebar";
 import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
 import { SidebarProvider } from "@repo/ui";
@@ -16,7 +15,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <SidebarProvider>
-        <div className="w-full">
+        <div className="w-full ">
           <Header />
           <div className="flex relative">
             <div>
@@ -29,6 +28,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
               <CartSidebar />
             </div>
           </div>
+          
         </div>
       </SidebarProvider>
 

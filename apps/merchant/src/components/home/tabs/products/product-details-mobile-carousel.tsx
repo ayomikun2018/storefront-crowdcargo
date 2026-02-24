@@ -35,19 +35,38 @@ const ProductDetailsMobileCarousel = ({
       setCurrent(api.selectedScrollSnap());
     });
   }, [api]);
+
+  const stockCount = 4; // Replace with actual stock count if dynamic
+
   return (
     <div className="w-full">
       {/* Main image */}
       <Carousel setApi={setApi} opts={{ loop: true }}>
         <CarouselContent>
-          {images.map((img, index) => (
+          {images.map((each, index) => (
             <CarouselItem key={index}>
-              <div className="relative w-full aspect-square bg-white rounded-xl border">
-                <Image src={img} alt="" fill className="object-contain p-4" />
+              <div className="relative w-full h-64 rounded-lg overflow-hidden border border-gray-300">
+                {/* Stock badge */}
+                {!outOfStock && (
+                  <div className="absolute top-2 left-2 bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded-lg z-10">
+                    {stockCount} units in Stock
+                  </div>
+                )}
+
+                <Image
+                  src={each}
+                  alt={`product image ${index}`}
+                  height={400}
+                  width={400}
+                  className={cn(
+                    "w-full h-full object-contain",
+                    outOfStock && "opacity-80",
+                  )}
+                />
 
                 {outOfStock && (
-                  <div className="absolute top-3 left-3 bg-destructive text-white text-xs px-3 py-1 rounded-full">
-                    Out of stock
+                  <div className="absolute bottom-0 left-0 right-0 bg-[#B42318CC] text-white text-sm text-center py-2 font-medium rounded-b-lg">
+                    Out of Stock
                   </div>
                 )}
               </div>
@@ -58,7 +77,7 @@ const ProductDetailsMobileCarousel = ({
 
       {/* Thumbnails */}
       <ScrollArea className="mt-3">
-        <div className="flex gap-3">
+        <div className="flex items-center justify-center gap-3">
           {images.map((img, index) => (
             <button
               key={index}

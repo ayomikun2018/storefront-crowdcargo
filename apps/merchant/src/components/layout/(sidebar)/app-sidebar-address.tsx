@@ -26,7 +26,7 @@ const AppSidebarAddress = () => {
 
   // Filter suggestions dynamically
   const filteredSuggestions = dummySuggestions.filter((s) =>
-    s.name.toLowerCase().includes(address.toLowerCase())
+    s.name.toLowerCase().includes(address.toLowerCase()),
   );
 
   const handleSave = () => {
@@ -38,7 +38,7 @@ const AppSidebarAddress = () => {
     <div className="relative w-full">
       <Dialog>
         <DialogTrigger asChild>
-          <div className="bg-gray-100 flex justify-between border border-dashed cursor-pointer">
+          <div className="bg-gray-100 flex md:justify-between border border-dashed cursor-pointer">
             <Image
               src="/assets/location-icon.svg"
               width={90}
@@ -47,7 +47,7 @@ const AppSidebarAddress = () => {
               className="size-18 ml-[-12px]"
             />
             <div className="flex flex-col gap-1">
-              <div className="flex items-center justify-center border border-amber-600 w-52 h-9 py-2 rounded-3xl bg-[#E186011A] text-foreground mr-3 mt-2">
+              <div className="flex items-center md:justify-center pl-2 md:pl-0 border border-amber-600 w-52 h-9 md:py-2 py-1 rounded-3xl bg-[#E186011A] text-foreground mr-3 mt-2">
                 <p className="flex gap-3 text-amber-600">
                   <MapPinIcon className="text-amber-600 size-6" />
                   Enter Address
@@ -60,7 +60,7 @@ const AppSidebarAddress = () => {
           </div>
         </DialogTrigger>
 
-        <DialogContent className="max-w-2xl">
+        <DialogContent className="md:max-w-2xl w-[90vw] md:w-auto">
           <DialogHeader className="p-4 pb-0 space-y-1 ">
             <DialogTitle className="text-xl font-bold">
               Enter Your Address
