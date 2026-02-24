@@ -181,17 +181,23 @@ export function CartSidebarWeb() {
   const { intersectionData } = useFooterIntersect();
   const pathname = usePathname();
 
-  const isCheckout = pathname.startsWith("/checkout");
+  const isCheckoutPage = pathname.startsWith("/checkout");
   useEffect(() => {
     if (pathname == "/checkout" || pathname.startsWith("/portal"))
       setOpen(false);
   }, [pathname]);
   return (
-    <div className="md:w-0">
+    <div
+      className={cn(
+        "transition-all duration-300",
+        isCheckoutPage ? "w-0" : open ? "md:w-80" : "w-1",
+      )}
+    >
       <Sidebar
         className={cn(
           "border-l border-l-gray-100 bg-white transition-all top-24 h-[calc(100vh-88px])]",
-          open ? "w-80" : "w-0",
+          isCheckoutPage ? "fixed right-0" : "",
+          open ? "md:w-80" : "w-0",
         )}
         side="right"
         style={{ bottom: `${intersectionData.pixelsVisible}px` }}
