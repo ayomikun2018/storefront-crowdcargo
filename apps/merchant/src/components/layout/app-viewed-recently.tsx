@@ -1,31 +1,29 @@
 "use client";
+
+import { Suspense, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import ProductDetailsSheet from "@/components/home/tabs/products/product-details-sheet";
-import { useState } from "react";
 import { ScrollArea, ScrollBar } from "@repo/ui";
-import ProductListingCard from "../home/tabs/products/product-listing-card";
+import ProductDetailsSheet from "@/components/home/tabs/products/product-details-sheet";
 import ProductViewedRecentlyCard from "../home/tabs/products/product-viewed-recently-card";
 
-const AppViewedRecently = () => {
+// 1. The Internal Content Component
+const ViewedRecentlyContent = () => {
   const pathname = usePathname();
-
   const searchParams = useSearchParams();
-  const [mobileGrid, setMobileGrid] = useState<"two" | "one">("two");
-  const [showProductDetails, setShowProductDetails] = useState(false);
-  //eslint-disable-next-line
-  const [selectedProduct, setSelectedProduct] = useState<any>();
 
+  const [showProductDetails, setShowProductDetails] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+
+  // Logic dependent on searchParams must be inside here
   const isCollectionLanding =
     pathname === "/collection" && !searchParams.get("view");
-
   const hardHiddenRoutes = ["/checkout", "/portal"];
   const isHardHidden = hardHiddenRoutes.some((route) =>
     pathname.startsWith(route),
   );
 
-  const isHidden = isCollectionLanding || isHardHidden;
+  if (isCollectionLanding || isHardHidden) return null;
 
-  if (isHidden) return null;
   return (
     <section className="bg-[#EBF2FF] py-6 md:hidden">
       <div className="px-4">
@@ -47,7 +45,7 @@ const AppViewedRecently = () => {
                 return (
                   <div key={index} className="w-[155px] shrink-0">
                     <ProductViewedRecentlyCard
-                      mobileGrid="two" // We use "two" to trigger the smaller height logic
+                      mobileGrid="two"
                       product={product}
                       onClick={() => {
                         setSelectedProduct(product);
@@ -71,8 +69,16 @@ const AppViewedRecently = () => {
   );
 };
 
-export default AppViewedRecently;
+// 2. The Exported Component with Suspense Boundary
+const AppViewedRecently = () => {
+  return (
+    <Suspense fallback={null}>
+      <ViewedRecentlyContent />
+    </Suspense>
+  );
+};
 
+export default AppViewedRecently;
 // "use client";
 // import ProductDetailsSheet from "@/components/home/tabs/products/product-details-sheet";
 // import ProductListingCard from "@/components/home/tabs/products/product-listing-card";

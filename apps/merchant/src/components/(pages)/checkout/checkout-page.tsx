@@ -1,10 +1,8 @@
+
 import React, { FC } from "react";
 import CheckoutPageWeb from "./checkout-page-web";
 import CheckoutPageMobile from "./checkout-page-mobile";
 
-interface PortalPageProps {
-  searchParams: { activeTab: string };
-}
 const CheckoutPage = () => {
   return (
     <>

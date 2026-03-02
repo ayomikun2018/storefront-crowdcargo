@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 import FAQsModal from "@/components/home/faqs-modal";
 import {
   Button,

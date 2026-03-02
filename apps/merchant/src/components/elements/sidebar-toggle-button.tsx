@@ -4,7 +4,6 @@ import { MenuIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { useAppSidebar } from "../layout/(sidebar)/app-sidebar-context";
-import { MobileSidebarSheet } from "../layout/(sidebar)/mobile-sidebar-sheet";
 
 type SidebarToggleButtonProps = {
   variant?: "floating" | "header";

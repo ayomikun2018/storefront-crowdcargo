@@ -1,4 +1,3 @@
-import OrdersPage from "@/app/(site)/collection/_page/collection-page";
 import DeliveryPolicyPage from "./_page/delivery-policy-page";
 
 export default async function Page({
@@ -9,7 +8,7 @@ export default async function Page({
   const serverSearchParams = await searchParams;
   return (
     <>
-      <DeliveryPolicyPage  />
+      <DeliveryPolicyPage />
     </>
   );
 }
