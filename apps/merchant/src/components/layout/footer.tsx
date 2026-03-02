@@ -1,3 +1,4 @@
+"use client";
 import FAQsModal from "@/components/home/faqs-modal";
 import {
   Button,
@@ -10,11 +11,21 @@ import { HeadsetIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import ReturnPolicyModal from "../home/return-policy-modal";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 const Footer = () => {
+  const pathname = usePathname();
+
+  // Exact match check
+  const isCheckoutPage = pathname === "/checkout";
+  const isCheckoutSuccessPage = pathname === "/checkout/checkout-success";
   return (
     <footer
-      className=" w-full bg-[url(/assets/footer-box-bg.svg)] space-y-10 pt-8  z-50  bg-[#191045] md:bg-white  relative  "
+      className={cn(
+        "w-full bg-[url(/assets/footer-box-bg.svg)] space-y-10 pt-8 z-50 bg-[#191045] md:bg-white relative",
+        isCheckoutPage ? "hidden md:block" : "block",
+      )}
       id="footer"
     >
       <section className="mx-auto container md:flex  md:justify-between items-center w-full px-5 md:px-0 space-y-4 md:space-y-0  ">
@@ -134,16 +145,31 @@ const Footer = () => {
           </Link>
         </div>
         <section className="flex flex-row md:flex-col pt-6 md:hidden">
-          <div className="  rounded-xl  bg-blue-600/10 p-4  flex flex-col max-w-2xl   ">
-            <p className="text-sm md:text-base text-white font-bold">
-              About us
-            </p>
-            <p className="text-gray-400 ">
-              Sed vivamus interdum non duis varius. Tortor eu nibh ac sit
-              egestas tellus non. Ac faucibus porttitor id sed ac ut
-              scelerisque. Cursus sodales.
-            </p>
-          </div>
+          {isCheckoutSuccessPage ? (
+            <div className="md:hidden flex flex-col items-center justify-center w-full">
+              <p className=" flex font-bold text-white text-xl">
+                If you need help, contact us via{" "}
+              </p>
+              <Link
+                href="#"
+                className="md:hidden text-bold text-primary text-xl underline"
+              >
+                {" "}
+                help@crowdcargo.app
+              </Link>
+            </div>
+          ) : (
+            <div className="  rounded-xl  bg-blue-600/10 p-4  flex flex-col max-w-2xl  items-center  ">
+              <p className="text-sm md:text-base text-white font-bold uppercase">
+                About us
+              </p>
+              <p className="text-gray-400 ">
+                Sed vivamus interdum non duis varius. Tortor eu nibh ac sit
+                egestas tellus non. Ac faucibus porttitor id sed ac ut
+                scelerisque. Cursus sodales.
+              </p>
+            </div>
+          )}
           <div className="md:flex gap-4 justify-end pt-4 hidden">
             <div className="md:flex gap-2 justify-center  ">
               <Link href="#" className="">

@@ -2,8 +2,6 @@
 import ShareDropdown from "@/components/home/share-dropdown";
 import ProductListings from "@/components/home/tabs/products/product-listings";
 import SalesBanner from "@/components/sales/sales-banner";
-// import DeliveryAddress from "@/components/portal/orders/delivery-address";
-import SalesBannerCarousel from "@/components/sales/sales-banner-carousel";
 import {
   Button,
   DropdownMenu,
@@ -18,20 +16,15 @@ import {
   SelectTrigger,
   SelectValue,
   ShareIcon,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
 } from "@repo/ui";
 import { FilterIcon } from "lucide-react";
-import Image from "next/image";
 import { FC, useState } from "react";
 
 interface PortalPageProps {
   searchParams: { activeTab: string };
 }
 
-const SalesPage: FC<PortalPageProps> = ({ searchParams }) => {
+const SalesPageWeb: FC<PortalPageProps> = ({ searchParams }) => {
   const [activeTab, setActiveTab] = useState(
     searchParams.activeTab || "collection",
   );
@@ -87,4 +80,4 @@ const SalesPage: FC<PortalPageProps> = ({ searchParams }) => {
   );
 };
 
-export default SalesPage;
+export default SalesPageWeb;

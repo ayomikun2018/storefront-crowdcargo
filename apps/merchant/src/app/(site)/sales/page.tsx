@@ -1,4 +1,4 @@
-import SalesPage from "./_page/sales-page";
+import SalesPage from "@/components/(pages)/sales/sales-page";
 
 export default async function Page({
   searchParams,

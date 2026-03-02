@@ -17,27 +17,14 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-  ShareIcon,
 } from "@repo/ui";
 import { useState } from "react";
-import ShareDropdown from "../../share-dropdown";
-import SearchStore from "@/components/layout/search-store";
-import {
-  ChevronDown,
-  ChevronDownIcon,
-  LayoutGridIcon,
-  LayoutListIcon,
-  Scroll,
-} from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 import { ViewToggleButton } from "@/components/elements/view-toggle-button";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import CollectionBanner from "@/components/collection/collection-banner";
-import HomeCollectionBanner from "../../home-collection-banner";
 import HomeCollectionBanners from "../../home-collection-banners";
 import ProductViewedRecently from "./product-viewed-recently";
-import AppViewedRecently from "@/components/layout/app-viewed-recently";
 import { useBreakpoint } from "@/hooks/use-breakpoint";
 
 const ProductListings = ({ search }: { search?: string }) => {
@@ -101,7 +88,7 @@ const ProductListings = ({ search }: { search?: string }) => {
       <div className="md:space-y-12 space-y-4">
         <div
           className={`
-      py-5 grid gap-6 transition-all duration-300 ease-in-out 
+      py-5 grid md:gap-6 gap-3 transition-all duration-300 ease-in-out 
      ${
        isHomeMobileSearch
          ? "grid-cols-2"
@@ -124,8 +111,7 @@ const ProductListings = ({ search }: { search?: string }) => {
                 outOfStock: index % 3 === 0,
               };
 
-              // Render first row (or first N cards) before the banner
-              if (index === 3) return null; // Skip rendering here; banner will go between
+              if (index === 3) return null;
               return (
                 <div key={index}>
                   <ProductListingCard
@@ -150,7 +136,7 @@ const ProductListings = ({ search }: { search?: string }) => {
         </div>
         <div className="flex justify-center ">
           <Button className="flex gap-2 px-4 !bg-white text-foreground border border-gray-300 cursor-pointer">
-            Load More
+            Load more
           </Button>
         </div>
         {/* Inject Shop Collection Banner */}
@@ -170,7 +156,7 @@ const ProductListings = ({ search }: { search?: string }) => {
 
             <ScrollArea
               className={`
-        grid gap-6 transition-all duration-300 ease-in-out 
+        grid gap-6 transition-all duration-300 ease-in-out  py-2
         ${mobileGrid === "one" ? "grid-cols-1" : "grid-cols-2"}
         grid-cols-[repeat(auto-fit,minmax(230px,1fr))]
       `}

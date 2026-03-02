@@ -1,10 +1,14 @@
-import HomePage from "@/app/(site)/_page/home-page";
+import HomePage from "@/components/(pages)/home/home-page";
 
 export default async function Home({
   searchParams,
 }: {
-  searchParams: Promise<{ [key: string]: string | undefined }>;
+  searchParams: Promise<{ activeTab: string }>;
 }) {
   const serverSearchParams = await searchParams;
-  return <HomePage searchParams={serverSearchParams} />;
+  return (
+    <>
+      <HomePage searchParams={serverSearchParams} />
+    </>
+  );
 }

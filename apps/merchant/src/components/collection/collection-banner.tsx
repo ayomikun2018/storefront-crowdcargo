@@ -5,12 +5,10 @@ import { Badge, PriceTagIcon } from "@repo/ui";
 import Image from "next/image";
 
 const CollectionBanner = () => {
-  // Prevent hydration flicker
 
   return (
     <section className="">
       <div className="relative rounded-md overflow-hidden md:hidden block">
-        {/* Image (no zoom, no crop) */}
         <Image
           src="/assets/collection-mobile-banner.svg"
           alt="Shop Collections"
@@ -20,9 +18,7 @@ const CollectionBanner = () => {
           priority
         />
 
-        {/* Optional overlay */}
 
-        {/* Content */}
         <div className="absolute inset-0 flex flex-col justify-between p-4 text-white">
           <h2 className="text-xl font-semibold max-w-[75%]">
             Shop From Your {""}

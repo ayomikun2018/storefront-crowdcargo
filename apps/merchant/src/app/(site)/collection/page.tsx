@@ -1,5 +1,4 @@
-import CollectionPage from "@/app/(site)/collection/_page/collection-page";
-import OrdersPage from "@/app/(site)/collection/_page/collection-page";
+import CollectionPage from "@/components/(pages)/collection/collection-page";
 
 export default async function Page({
   searchParams,

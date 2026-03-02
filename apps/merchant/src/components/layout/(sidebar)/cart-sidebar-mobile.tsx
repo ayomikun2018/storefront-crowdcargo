@@ -35,7 +35,10 @@ type FooterProps = {
   itemCount: number;
   setOpen: (open: boolean) => void;
 };
-
+type CartFooterProps = {
+  itemCount: number;
+  variant?: "fixed" | "inline";
+};
 export function CartSidebarMobile() {
   const { open, setOpen, setOpenMobile } = useCartSidebar();
   const router = useRouter();
@@ -58,7 +61,6 @@ export function CartSidebarMobile() {
       price: 50000,
     },
   ];
-  // 👉 mock
   const isEmpty = cartItems.length === 0;
   return (
     <div className={open ? "w-full" : "w-0"}>
@@ -82,7 +84,6 @@ export function CartSidebarMobile() {
 function EmptyCartView({ setOpenMobile }: ViewProps) {
   return (
     <div className="flex flex-col h-full bg-[#F5F5F5]">
-      {/* HEADER */}
       <div className="px-4 py-4">
         <button
           onClick={() => setOpenMobile(false)}
@@ -92,7 +93,6 @@ function EmptyCartView({ setOpenMobile }: ViewProps) {
         </button>
       </div>
 
-      {/* CONTENT */}
       <div className="flex-1 flex flex-col items-center justify-center text-center px-6">
         <div className="bg-[#DDE6F2] rounded-[70px] p-14 mb-6">
           <Image
@@ -107,17 +107,13 @@ function EmptyCartView({ setOpenMobile }: ViewProps) {
         </div>
       </div>
 
-      {/* FOOTER */}
       <div className="flex flex-col  items-center bg-white px-4 pt-4 pb-6 border-t space-y-4 items-center  ">
-        {/* ADD BUTTON */}
-
         <Button className="text-primary bg-blue-100 rounded-full  border border-primary items-center justify-center">
           {" "}
           <PlusCircleIcon /> Add Item
         </Button>
         <hr className="text-gray-800" />
 
-        {/* CHECKOUT DISABLED */}
         <button
           disabled
           className="w-full bg-blue-300 text-white py-4 rounded-3xl font-semibold "
@@ -125,7 +121,6 @@ function EmptyCartView({ setOpenMobile }: ViewProps) {
           Checkout
         </button>
 
-        {/* SHIPPING INFO */}
         <div className="flex justify-center">
           <div className="flex items-center gap-2 bg-blue-100 text-gray-500 px-4 py-2 rounded-full text-sm">
             <BoxIcon className="size-4 text-primary" />
@@ -172,13 +167,11 @@ function FilledCartView({ cartItems, setOpenMobile }: FilledViewProps) {
         </div>
       </div>
 
-      {/* ITEMS */}
       <div className="flex-1 overflow-y-auto px-4 py-3">
         <CartItems items={cartItems} />
       </div>
 
-      {/* FOOTER */}
-      <CartFooter itemCount={cartItems.length} />
+      <CartFooter itemCount={cartItems.length} variant="inline" />
     </div>
   );
 }
@@ -228,42 +221,52 @@ function CartItems({ items }: { items: any[] }) {
   );
 }
 
-function CartFooter({ itemCount }: { itemCount: number }) {
+export function CartFooter({ itemCount, variant = "fixed" }: CartFooterProps) {
+  if (!itemCount) return null;
+
   return (
-    <div className="gap-0 p-0">
-      <div className="mx-2 bg-primary/5 py-2 rounded-lg">
-        <div className="flex items-center justify-center gap-2 bg-blue-100 text-gray-500 text-[13px] px-3 py-1.5 rounded-full w-fit mx-auto">
-          <BoxIcon className="text-primary size-4 shrink-0" />
-          <span className="leading-none">
-            Shipping fee calculated at checkout
-          </span>
-        </div>
-      </div>
-
-      <div className="flex items-start gap-2 py-2 px-3 bg-secondary text-white">
-        <span className="mt-3 border border-white rounded-lg inline-block p-2 bg-gradient-to-r from-secondary via-secondary to-violet-900">
-          <CartIcon className="size-8 !text-white" />
-        </span>
-
-        <div className="space-y-1 flex-1">
-          <div className="flex  items-center  justify-between space-y-0.5 gap-4">
-            <p> Subtotal (4 Items)</p>
-
-            <p className="text-lg font-semibold leading-4">
-              {currencyFormatter(12890.0, {
-                currency: "NGN",
-                minimumFractionDigits: 2,
-              })}
-            </p>
+    <div
+      className={cn(
+        "z-50  border-t shadow-lg",
+        variant === "fixed" && "fixed bottom-0 left-0 right-0  bg-blue-50 ",
+        variant === "inline" && "relative w-full",
+      )}
+    >
+      <div className="gap-0 p-0">
+        <div className="mx-2 bg-primary/5 py-2 rounded-lg">
+          <div className="flex items-center justify-center gap-2 bg-blue-100 text-gray-500 text-[13px] px-3 py-1.5 rounded-full w-fit mx-auto">
+            <BoxIcon className="text-primary size-4 shrink-0" />
+            <span className="leading-none">
+              Shipping fee calculated at checkout
+            </span>
           </div>
-          <Button
-            className="uppercase flex gap-2 items-center w-full bg-warning text-xs rounded-sm"
-            asChild
-          >
-            <Link href="/checkout">
-              Proceed to checkout <ArrowRight size={14} />
-            </Link>
-          </Button>
+        </div>
+
+        <div className="flex items-start gap-2 py-2 px-3 bg-secondary text-white">
+          <span className="mt-3 border border-white rounded-lg inline-block p-2 bg-gradient-to-r from-secondary via-secondary to-violet-900">
+            <CartIcon className="size-8 !text-white" />
+          </span>
+
+          <div className="space-y-1 flex-1">
+            <div className="flex  items-center  justify-between space-y-0.5 gap-4">
+              <p> Subtotal (4 Items)</p>
+
+              <p className="text-lg font-semibold leading-4">
+                {currencyFormatter(12890.0, {
+                  currency: "NGN",
+                  minimumFractionDigits: 2,
+                })}
+              </p>
+            </div>
+            <Button
+              className="uppercase flex gap-2 items-center w-full bg-warning text-xs rounded-sm"
+              asChild
+            >
+              <Link href="/checkout">
+                Proceed to checkout <ArrowRight size={14} />
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import NewPasswordForm from "@/components/auth/new-password-form";
 import ResetCodeForm from "@/components/auth/reset-code-form";
 import ResetPasswordForm from "@/components/auth/reset-password-form";
 import SignUpForm from "@/components/auth/sign-up-form";
-import { Sheet, SheetContent } from "@repo/ui";
+import { Sheet, SheetContent, SheetTitle } from "@repo/ui";
 
 import { Dispatch, FC, SetStateAction, useState } from "react";
 

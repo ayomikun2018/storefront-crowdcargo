@@ -1,5 +1,4 @@
-import CheckoutPage from "@/app/(site)/checkout/_page/checkout-page";
-import CheckoutSuccessPage from "./_page/checkout-success-page";
+import CheckoutSuccessPage from "@/components/(pages)/checkout/checkout-success/checkout-success";
 
 export const metadata = { title: "CheckoutSuccess" };
 

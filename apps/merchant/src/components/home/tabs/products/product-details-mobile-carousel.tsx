@@ -45,7 +45,7 @@ const ProductDetailsMobileCarousel = ({
         <CarouselContent>
           {images.map((each, index) => (
             <CarouselItem key={index}>
-              <div className="relative w-full h-64 rounded-lg overflow-hidden border border-gray-300">
+              <div className="relative w-full h-[345px] rounded-lg overflow-hidden border border-gray-300">
                 {/* Stock badge */}
                 {!outOfStock && (
                   <div className="absolute top-2 left-2 bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded-lg z-10">
@@ -56,8 +56,7 @@ const ProductDetailsMobileCarousel = ({
                 <Image
                   src={each}
                   alt={`product image ${index}`}
-                  height={400}
-                  width={400}
+                  fill
                   className={cn(
                     "w-full h-full object-contain",
                     outOfStock && "opacity-80",
@@ -65,7 +64,7 @@ const ProductDetailsMobileCarousel = ({
                 />
 
                 {outOfStock && (
-                  <div className="absolute bottom-0 left-0 right-0 bg-[#B42318CC] text-white text-sm text-center py-2 font-medium rounded-b-lg">
+                  <div className="absolute bottom-0 left-0 right-0 bg-[#B42318CC] text-white text-sm text-center py-4 font-semibold rounded-b-lg">
                     Out of Stock
                   </div>
                 )}
@@ -90,8 +89,8 @@ const ProductDetailsMobileCarousel = ({
               <Image
                 src={img}
                 alt=""
-                width={64}
-                height={64}
+                width={74}
+                height={74}
                 className="object-contain"
               />
             </button>

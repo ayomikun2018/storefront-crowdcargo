@@ -1,198 +1,3 @@
-// "use client";
-
-// import Image from "next/image";
-// import { Badge, Button, CautionIcon } from "@repo/ui";
-// import { currencyFormatter } from "@/lib/utils";
-// import { AppleIcon, Package, StoreIcon } from "lucide-react";
-
-// export default function CheckoutSuccessPage() {
-//   return (
-//     <div className="max-w-7xl mx-auto px-4">
-//       <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8">
-//         <div className="space-y-8">
-//           <div className="space-y-2 flex  flex-col justify-center items-center">
-//             <h1 className="text-2xl font-semibold">Order Confirmed.</h1>
-//             <p className=" text-2xl font-semibold">
-//               Thank you for shopping at Oriamo Store
-//             </p>
-//             <p className="text-sm text-gray-500">
-//               We’ve sent a confirmation email to{" "}
-//               <span className="text-primary font-semibold">
-//                 emmy4eva@gmail.com
-//               </span>
-//             </p>
-//           </div>
-
-//           <Section title="ORDER / CUSTOMER DETAILS">
-//             <KeyValue label="Order Date:" value="24/07/2024" />
-//             <KeyValue
-//               label="Order ID / Tracking ID:"
-//               valueClass="font-semibold"
-//               value="NGR-0126-23456-7DT"
-//             />
-//             <KeyValue
-//               label="Name:"
-//               valueClass="font-semibold"
-//               value="Shola Benson"
-//             />
-//             <KeyValue label="Phone number:" value="+234906 879 0982" />
-//             <KeyValue label="No of Items:" value="8 Items" />
-//             <KeyValue
-//               label="Total Paid:"
-//               value="₦6,200"
-//               valueClass="font-semibold"
-
-//             />
-//           </Section>
-
-//           <Section title="DELIVERY INFORMATION">
-//             <KeyValue label="Address:" value="24 Bridge Shomolu Street" />
-//             <KeyValue label="Country:" value="Nigeria" />
-//             <KeyValue label="State:" value="Lagos State" />
-//             <KeyValue
-//               label="Area:"
-//               valueClass="font-semibold"
-//               value="Shola Benson"
-//             />
-//           </Section>
-
-//           <Section title="ITEMS IN CART (8)">
-//             <OrderItem />
-//             <OrderItem />
-//             <OrderItem discounted />
-//           </Section>
-//         </div>
-
-//         {/* RIGHT */}
-//     <div className=" py-10 relative border-l">
-//       <div className="flex flex-col items-center text-center">
-//         <Image
-//           src="https://dummyimage.com/260x160"
-//           alt="success illustration"
-//           width={260}
-//           height={160}
-//         />
-//       </div>
-
-//       <div className="relative bg-primary text-white  overflow-hidden mt-8">
-//         <div className="flex gap-4 pt-4 px-4">
-//           <div className="bg-white h-14 flex items-center">
-//             <Image
-//               alt="qr-code"
-//               src="/assets/order-success-qr-code.png"
-//               width={120}
-//               height={120}
-//               className=""
-//             />
-//           </div>
-
-//           <div className="flex flex-col justify-center gap-3">
-//             <p className="text-lg leading-snug  font-bold">
-//               Find & Shop <span className="underline">Oriamo Store</span>{" "}
-//               and Track your Order on the CrowdCargo App
-//             </p>
-
-//             <div className="inline-flex items-center gap-2 bg-white text-black px-3 py-1.5 rounded-full text-xs font-medium w-fit">
-//               <Image
-//                 alt="download-app"
-//                 src="/assets/download-app.svg"
-//                 width={120}
-//                 height={120}
-//                 className=""
-//               />
-//             </div>
-//           </div>
-//         </div>
-
-//         <div className="absolute -bottom-1 right-2 w-26 h-16  pointer-events-none">
-//           <Image
-//             src="/assets/map-illustration.svg"
-//             alt="map"
-//             fill
-//             className="object-contain"
-//           />
-//         </div>
-//       </div>
-
-//       <div className="flex items-center justify-center gap-2 bg-[#1E1B4B] text-white  py-2  text-xs">
-//         <span className="inline-flex items-center gap-2">
-//           <Package size={12} /> Your order will arrive within 2–3 working
-//           days
-//         </span>
-//       </div>
-
-//       <div className=" bg-gradient-to-r from-yellow-700 to-yellow-400  flex items-center gap-2 bg-warning text-white  py-2 px-1 text-xs ">
-//         <CautionIcon className="size-4 text-white" />
-//         This is an inter-state delivery. This vendor is based in Lagos
-//       </div>
-//     </div>
-//   </div>
-// </div>
-//   );
-// }
-
-// function Section({
-//   title,
-//   children,
-// }: {
-//   title: string;
-//   children: React.ReactNode;
-// }) {
-//   return (
-//     <div className="space-y-3 ">
-//       <p className=" font-extrabold text-gray-500 text-sm ">{title}</p>
-//       <hr className="" />
-//       <div className="divide-y  rounded-lg">{children}</div>
-//       <hr className="divide-y" />
-//       <div className=" border-dashed border border-gray-500" />
-//     </div>
-//   );
-// }
-
-// function KeyValue({
-//   label,
-//   value,
-//   valueClass = "",
-// }: {
-//   label: string;
-//   value: string;
-//   valueClass?: string;
-// }) {
-//   return (
-//     <div className="flex justify-between px-4 py-3 text-sm">
-//       <span className="text-gray-500">{label}</span>
-//       <span className={valueClass}>{value}</span>
-//     </div>
-//   );
-// }
-
-// function OrderItem({ discounted }: { discounted?: boolean }) {
-//   return (
-//     <div className="flex items-center gap-4 px-4 py-4">
-//       <Image
-//         src="/assets/product-listing.svg"
-//         alt="Product"
-//         width={64}
-//         height={64}
-//         className="border rounded"
-//       />
-
-//       <div className="flex-1">
-//         <p className="text-sm font-medium">
-//           Tofa Chair from House of Chairs 7x7” (Brown)
-//         </p>
-//         <p className="text-xs text-gray-500">Color: Blue | Size: L | QTY: 3</p>
-//       </div>
-
-//       <div className="text-sm font-medium text-right">
-//         {discounted && (
-//           <p className="line-through text-destructive text-xs">₦40,000</p>
-//         )}
-//         <p className="text-primary">₦40,000</p>
-//       </div>
-//     </div>
-//   );
-// }
 "use client";
 
 import Image from "next/image";
@@ -201,7 +6,7 @@ import { Package } from "lucide-react";
 import { cn } from "@/lib/utils";
 import useFooterIntersect from "@/hooks/use-footer-intersect";
 
-export default function CheckoutSuccessPage() {
+export default function CheckoutSuccessPageWeb() {
   const { intersectionData } = useFooterIntersect();
 
   // ================= DATA =================
@@ -465,3 +270,198 @@ function RightPanel({
     </div>
   );
 }
+// "use client";
+
+// import Image from "next/image";
+// import { Badge, Button, CautionIcon } from "@repo/ui";
+// import { currencyFormatter } from "@/lib/utils";
+// import { AppleIcon, Package, StoreIcon } from "lucide-react";
+
+// export default function CheckoutSuccessPage() {
+//   return (
+//     <div className="max-w-7xl mx-auto px-4">
+//       <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8">
+//         <div className="space-y-8">
+//           <div className="space-y-2 flex  flex-col justify-center items-center">
+//             <h1 className="text-2xl font-semibold">Order Confirmed.</h1>
+//             <p className=" text-2xl font-semibold">
+//               Thank you for shopping at Oriamo Store
+//             </p>
+//             <p className="text-sm text-gray-500">
+//               We’ve sent a confirmation email to{" "}
+//               <span className="text-primary font-semibold">
+//                 emmy4eva@gmail.com
+//               </span>
+//             </p>
+//           </div>
+
+//           <Section title="ORDER / CUSTOMER DETAILS">
+//             <KeyValue label="Order Date:" value="24/07/2024" />
+//             <KeyValue
+//               label="Order ID / Tracking ID:"
+//               valueClass="font-semibold"
+//               value="NGR-0126-23456-7DT"
+//             />
+//             <KeyValue
+//               label="Name:"
+//               valueClass="font-semibold"
+//               value="Shola Benson"
+//             />
+//             <KeyValue label="Phone number:" value="+234906 879 0982" />
+//             <KeyValue label="No of Items:" value="8 Items" />
+//             <KeyValue
+//               label="Total Paid:"
+//               value="₦6,200"
+//               valueClass="font-semibold"
+
+//             />
+//           </Section>
+
+//           <Section title="DELIVERY INFORMATION">
+//             <KeyValue label="Address:" value="24 Bridge Shomolu Street" />
+//             <KeyValue label="Country:" value="Nigeria" />
+//             <KeyValue label="State:" value="Lagos State" />
+//             <KeyValue
+//               label="Area:"
+//               valueClass="font-semibold"
+//               value="Shola Benson"
+//             />
+//           </Section>
+
+//           <Section title="ITEMS IN CART (8)">
+//             <OrderItem />
+//             <OrderItem />
+//             <OrderItem discounted />
+//           </Section>
+//         </div>
+
+//         {/* RIGHT */}
+//     <div className=" py-10 relative border-l">
+//       <div className="flex flex-col items-center text-center">
+//         <Image
+//           src="https://dummyimage.com/260x160"
+//           alt="success illustration"
+//           width={260}
+//           height={160}
+//         />
+//       </div>
+
+//       <div className="relative bg-primary text-white  overflow-hidden mt-8">
+//         <div className="flex gap-4 pt-4 px-4">
+//           <div className="bg-white h-14 flex items-center">
+//             <Image
+//               alt="qr-code"
+//               src="/assets/order-success-qr-code.png"
+//               width={120}
+//               height={120}
+//               className=""
+//             />
+//           </div>
+
+//           <div className="flex flex-col justify-center gap-3">
+//             <p className="text-lg leading-snug  font-bold">
+//               Find & Shop <span className="underline">Oriamo Store</span>{" "}
+//               and Track your Order on the CrowdCargo App
+//             </p>
+
+//             <div className="inline-flex items-center gap-2 bg-white text-black px-3 py-1.5 rounded-full text-xs font-medium w-fit">
+//               <Image
+//                 alt="download-app"
+//                 src="/assets/download-app.svg"
+//                 width={120}
+//                 height={120}
+//                 className=""
+//               />
+//             </div>
+//           </div>
+//         </div>
+
+//         <div className="absolute -bottom-1 right-2 w-26 h-16  pointer-events-none">
+//           <Image
+//             src="/assets/map-illustration.svg"
+//             alt="map"
+//             fill
+//             className="object-contain"
+//           />
+//         </div>
+//       </div>
+
+//       <div className="flex items-center justify-center gap-2 bg-[#1E1B4B] text-white  py-2  text-xs">
+//         <span className="inline-flex items-center gap-2">
+//           <Package size={12} /> Your order will arrive within 2–3 working
+//           days
+//         </span>
+//       </div>
+
+//       <div className=" bg-gradient-to-r from-yellow-700 to-yellow-400  flex items-center gap-2 bg-warning text-white  py-2 px-1 text-xs ">
+//         <CautionIcon className="size-4 text-white" />
+//         This is an inter-state delivery. This vendor is based in Lagos
+//       </div>
+//     </div>
+//   </div>
+// </div>
+//   );
+// }
+
+// function Section({
+//   title,
+//   children,
+// }: {
+//   title: string;
+//   children: React.ReactNode;
+// }) {
+//   return (
+//     <div className="space-y-3 ">
+//       <p className=" font-extrabold text-gray-500 text-sm ">{title}</p>
+//       <hr className="" />
+//       <div className="divide-y  rounded-lg">{children}</div>
+//       <hr className="divide-y" />
+//       <div className=" border-dashed border border-gray-500" />
+//     </div>
+//   );
+// }
+
+// function KeyValue({
+//   label,
+//   value,
+//   valueClass = "",
+// }: {
+//   label: string;
+//   value: string;
+//   valueClass?: string;
+// }) {
+//   return (
+//     <div className="flex justify-between px-4 py-3 text-sm">
+//       <span className="text-gray-500">{label}</span>
+//       <span className={valueClass}>{value}</span>
+//     </div>
+//   );
+// }
+
+// function OrderItem({ discounted }: { discounted?: boolean }) {
+//   return (
+//     <div className="flex items-center gap-4 px-4 py-4">
+//       <Image
+//         src="/assets/product-listing.svg"
+//         alt="Product"
+//         width={64}
+//         height={64}
+//         className="border rounded"
+//       />
+
+//       <div className="flex-1">
+//         <p className="text-sm font-medium">
+//           Tofa Chair from House of Chairs 7x7” (Brown)
+//         </p>
+//         <p className="text-xs text-gray-500">Color: Blue | Size: L | QTY: 3</p>
+//       </div>
+
+//       <div className="text-sm font-medium text-right">
+//         {discounted && (
+//           <p className="line-through text-destructive text-xs">₦40,000</p>
+//         )}
+//         <p className="text-primary">₦40,000</p>
+//       </div>
+//     </div>
+//   );
+// }

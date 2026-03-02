@@ -5,36 +5,48 @@ import HomeCollectionBanner from "./home-collection-banner";
 const HomeCollectionBanners = () => {
   const banners = [
     {
-      bgImage: "/assets/home-collection-banner.svg",
+      bgImage: "/assets/collection-background.svg",
+      productImage: "/assets/headphone.svg",
       title: "Gadgets Go",
       itemCount: 25,
+      bannerBackgroundColor: "#1E1546", // Deep Navy BG
+      bannerBorderColor: "#130D2E", // Even darker Navy Border
       titleTextColor: "text-white",
-      badgeTextColor: "text-black",
       badgeBackgroundColor: "bg-white",
+      badgeTextColor: "text-black",
     },
     {
-      bgImage: "/assets/home-collection-banner-two.svg",
+      bgImage: "/assets/collection-background.svg",
+      productImage: "/assets/headphone.svg",
       title: "My Bags",
       itemCount: 40,
-      titleTextColor: "text-black",
+      bannerBackgroundColor: "#F0F9FF", // Light Blue BG
+      bannerBorderColor: "#130D2E", // Light Blue Border
+      titleTextColor: "text-gray-900",
+      badgeBackgroundColor: "bg-[#130D2E]",
       badgeTextColor: "text-white",
-      badgeBackgroundColor: "bg-black",
     },
     {
-      bgImage: "/assets/home-collection-banner.svg",
+      bgImage: "/assets/collection-background.svg",
+      productImage: "/assets/headphone.svg",
       title: "Gadgets Go",
       itemCount: 25,
+      bannerBackgroundColor: "#1E1546", // Deep Navy BG
+      bannerBorderColor: "#130D2E", // Even darker Navy Border
       titleTextColor: "text-white",
-      badgeTextColor: "text-black",
       badgeBackgroundColor: "bg-white",
+      badgeTextColor: "text-black",
     },
     {
-      bgImage: "/assets/home-collection-banner-two.svg",
+      bgImage: "/assets/collection-background.svg",
+      productImage: "/assets/headphone.svg",
       title: "My Bags",
       itemCount: 40,
-      titleTextColor: "text-black",
+      bannerBackgroundColor: "#F0F9FF", // Light Blue BG
+      bannerBorderColor: "#130D2E", // Light Blue Border
+      titleTextColor: "text-gray-900",
+      badgeBackgroundColor: "bg-[#130D2E]",
       badgeTextColor: "text-white",
-      badgeBackgroundColor: "bg-black",
     },
   ];
 

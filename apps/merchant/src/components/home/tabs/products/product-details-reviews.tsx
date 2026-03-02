@@ -28,8 +28,9 @@ const ProductDetailsReviews = () => {
         </Link>
       </div>
       <Button
+      disabled
         variant="outline"
-        className="text-primary bg-primary/10 w-full border-primary h-12"
+        className="text-blue-400 bg-white w-full p-7  border-blue-400"
       >
         Add your Own Ratings
       </Button>

@@ -1,11 +1,11 @@
 import React from "react";
-import WebSidebar from "./web-sidebar";
+import AppSidebarWeb from "./app-sidebar-web";
 
 export default function AppSidebar() {
   return (
     <>
       <div className="hidden md:block">
-        <WebSidebar />
+        <AppSidebarWeb />
       </div>
     </>
   );

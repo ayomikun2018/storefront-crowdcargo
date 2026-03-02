@@ -1,5 +1,4 @@
 "use client";
-
 import FloatingInput, {
   FloatingSelect,
 } from "@/components/elements/floating-input";
@@ -21,6 +20,7 @@ import Link from "next/link";
 import { useState } from "react";
 import useFooterIntersect from "@/hooks/use-footer-intersect";
 import * as Yup from "yup";
+import { MapPin } from "lucide-react";
 
 const validationSchema = Yup.object({
   firstName: Yup.string().required("First name is required").default(""),
@@ -40,7 +40,7 @@ const validationSchema = Yup.object({
     .default(""),
 });
 
-const CheckoutPage = () => {
+const CheckoutPageWeb = () => {
   const [showOrderSuccess, setShowOrderSuccess] = useState(false);
   const { intersectionData } = useFooterIntersect(); // ✅ Detect footer
 
@@ -68,13 +68,13 @@ const CheckoutPage = () => {
     <div className="relative @container lg:pr-[420px]">
       <div className="flex gap-6 items-start">
         <div className="space-y-4 md:flex-2 ">
-          <div className="flex justify-between py-4 border-b border-gray-200">
+          <div className="flex justify-between py-4 border-b border-gray-200 font-semibold ">
             <h2 className="inline-flex gap-2 items-center text-2xl font-semibold">
               <Link href="/">
                 <ChevronLeftIcon className="size-5" />
               </Link>
               Checkout
-              <Badge className="bg-blue-50 text-gray-600 py-1.5 text-sm">
+              <Badge className="bg-blue-50 text-gray-600 py-1.5 text-sm font-semibold ">
                 Cart Total{" "}
                 <span className="text-primary">
                   - {currencyFormatter(7000)}
@@ -82,13 +82,13 @@ const CheckoutPage = () => {
               </Badge>
             </h2>
 
-            <Badge className="bg-blue-50 text-gray-600 text-sm">
+            <Badge className="bg-blue-50 text-gray-600  text-sm font-semibold   rounded-lg px-1 py-1 ">
               Total Items - (2)
               <Button
-                className="!bg-blue-200 flex gap-1 rounded-3xl px-1 h-5 text-primary text-sm"
+                className="!bg-blue-200 flex gap-1 rounded-3xl px-1 h-5 text-primary text-sm font-semibold"
                 onClick={() => setOpenCartSidebar(true)}
               >
-                <EditIcon className="size-4" /> Edit Cart
+                <EditIcon className="size-4 font-semibold " /> Edit Cart
               </Button>
             </Badge>
           </div>
@@ -214,32 +214,23 @@ const CheckoutPage = () => {
             <div className="flex-1 overflow-y-auto px-4 pt-4 space-y-4">
               <div className="flex flex-col justify-between py-4 border-b border-gray-200">
                 <Tabs defaultValue="delivery" className="w-full">
-                  <TabsList className="flex justify-between gap-2 h-12 w-full bg-transparent">
+                  <TabsList className="flex justify-between items-center gap-2  h-12 w-full bg-transparent  border-b border-gray-20  rounded-none pb-1">
                     <span>
-                      <h2 className="text-xl font-semibold text-gray-500 whitespace-nowrap">
+                      <h2 className="text-lg font-semibold text-black ">
                         Delivery Method
                       </h2>
                     </span>
-
-                    <div className="flex self-end justify-end bg-blue-100 p-1 rounded-2xl w-auto gap-2">
+                    <div className="flex self-end justify-end bg-blue-100 rounded-2xl w-auto gap-2">
                       <TabsTrigger
                         value="delivery"
-                        className="flex gap-1 rounded-3xl px-2 h-8 text-sm border border-transparent text-muted-foreground
-                   data-[state=active]:bg-blue-500
-                   data-[state=active]:text-white
-                   data-[state=active]:border-2
-                   data-[state=active]:border-secondary"
+                        className="flex gap-1 rounded-3xl px-4 h-9 text-xs border border-transparent text-muted-foreground data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:border-2 data-[state=active]:border-secondary"
                       >
                         Delivery
                       </TabsTrigger>
 
                       <TabsTrigger
                         value="pickup"
-                        className="flex gap-1 rounded-3xl px-2 h-8 text-sm border border-transparent text-muted-foreground
-                   data-[state=active]:bg-blue-500
-                   data-[state=active]:text-white
-                   data-[state=active]:border-2
-                   data-[state=active]:border-secondary"
+                        className="flex gap-1 rounded-3xl px-4 h-9 text-xs border border-transparent text-muted-foreground data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:border-2 data-[state=active]:border-secondary"
                       >
                         Store Pickup
                       </TabsTrigger>
@@ -352,7 +343,11 @@ const CheckoutPage = () => {
                 </div>
 
                 <div className="flex justify-between py-2">
-                  <span className="text-gray-500">Shipping (Delivery)</span>
+                  <span className="text-gray-500 flex gap-1 items-center justify-center">
+                    {" "}
+                    <MapPin size={15} className="text-primary" /> Shipping
+                    (Delivery Fee)
+                  </span>
                   <span className="text-warning">Pending pickup address</span>
                 </div>
 
@@ -365,7 +360,7 @@ const CheckoutPage = () => {
 
             <div className="p-4 border-t bg-white">
               <Link href="/checkout/checkout-success">
-                <Button className="w-full h-12 text-md">
+                <Button className="w-full h-12 text-md rounded-none">
                   Pay {currencyFormatter(7600)}
                 </Button>
               </Link>
@@ -377,7 +372,7 @@ const CheckoutPage = () => {
   );
 };
 
-export default CheckoutPage;
+export default CheckoutPageWeb;
 // "use client";
 
 // import OrderSuccessModal from "@/components/checkout/order-success-modal";
@@ -421,7 +416,7 @@ export default CheckoutPage;
 //     .default(""),
 // });
 
-// const CheckoutPage = () => {
+// const CheckoutPageWeb = () => {
 //   const [showOrderSuccess, setShowOrderSuccess] = useState(false);
 //   const { intersectionData } = useFooterIntersect(); // ✅ Detect footer
 
@@ -725,4 +720,4 @@ export default CheckoutPage;
 //   );
 // };
 
-// export default CheckoutPage;
+// export default CheckoutPageWeb;

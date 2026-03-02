@@ -146,7 +146,6 @@
 // }
 "use client";
 import SearchStore from "@/components/layout/search-store";
-import UserPanel from "@/components/layout/user-panel";
 import { CountriesAtlas } from "@amplifiedhq/countries-atlas";
 import {
   Badge,
@@ -165,7 +164,6 @@ import {
   SelectTrigger,
   SelectValue,
   StarIcon,
-
   useSidebar,
 } from "@repo/ui";
 import Image from "next/image";
@@ -174,6 +172,7 @@ import { MenuIcon } from "lucide-react";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import ReturnPolicyModal from "@/components/home/return-policy-modal";
+import UserPanel from "./shared/user-panel";
 
 const countries = CountriesAtlas.getCountries().filter((each) =>
   ["US", "NG", "GB"].includes(each?.code as string),
@@ -230,10 +229,11 @@ const WebHeader = () => {
               </h2>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <div className="text-lg leading-5  font-semibold  md:hidden bg-primary/5  outline outline-gray-300 rounded-full p-1 pr-4 ">
-                    Oraimo Store
-                  </div>
+                <PopoverTrigger
+                  asChild
+                  className="text-lg leading-5  font-semibold  md:hidden bg-primary/5  outline outline-gray-300 rounded-full p-1 pr-4 "
+                >
+                  Oraimo Store
                 </PopoverTrigger>
                 <PopoverContent className="w-60 p-2 ml-26 mt-3 ">
                   <div className="grid gap-4 bg-gray-100 rounded p-2">
@@ -283,7 +283,7 @@ const WebHeader = () => {
           </div>
           <div className="flex gap-4 items-center md:bg-transparent md:rounded-none bg-gray-100 rounded-full p-2">
             <div className="md:flex hidden">
-              <Select defaultValue="NG" onValueChange={setSelectedCountry}>
+              <Select defaultValue="NG" onValueChange={setSelectedCountry} >
                 <SelectTrigger className="p-2 rounded-md border !h-11 w-28">
                   <SelectValue placeholder="Select Country" />
                 </SelectTrigger>

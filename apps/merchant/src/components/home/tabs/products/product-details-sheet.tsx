@@ -28,7 +28,6 @@ import { ArrowLeftIcon, EyeIcon } from "lucide-react";
 import { Dispatch, FC, SetStateAction } from "react";
 import ProductDetailsMobileCarousel from "./product-details-mobile-carousel";
 import ProductDetailsWebCarousel from "./product-details-web-carousel";
-import MobileHeader from "@/components/layout/mobile-header";
 import AppViewedRecently from "@/components/layout/app-viewed-recently";
 import Footer from "@/components/layout/footer";
 import ProductViewedRecently from "./product-viewed-recently";
@@ -93,7 +92,7 @@ const ProductDetailsSheet: FC<ProductDetailsSheetProps> = ({
           </div>
 
           {/* BODY */}
-          <ScrollArea className="px-4 max-h-[calc(100vh-140px)] pb-20 relative">
+          <ScrollArea className="px-4 md:h-[calc(100vh-120px)] h-[calc (100vh-140px)] pb-20 relative">
             <div className="space-y-4">
               {/* IMAGES */}
 
@@ -109,7 +108,7 @@ const ProductDetailsSheet: FC<ProductDetailsSheetProps> = ({
                 </div>
 
                 {/* DESKTOP */}
-                <div className="hidden md:block">
+                <div className="hidden md:block pt-4">
                   <ProductDetailsWebCarousel
                     images={Array(5)
                       .fill(null)
@@ -122,8 +121,8 @@ const ProductDetailsSheet: FC<ProductDetailsSheetProps> = ({
               <hr className="border border-muted" />
 
               {/* SIZE CHART */}
-              <Button className="text-gray-700 rounded-full w-full border border-gray-500 bg-gray-200 px-2 py-1">
-                <EyeIcon className="size-4" />
+              <Button className="text-gray-700 rounded-full w-full border border-gray-500 bg-gray-200 px-2  py-0">
+                <EyeIcon className="size-3" />
                 <span className="text-sm">View Size Chart</span>
               </Button>
 
@@ -242,7 +241,6 @@ const ProductDetailsSheet: FC<ProductDetailsSheetProps> = ({
             </div>
           </ScrollArea>
         </SheetContent>
-    
       </Sheet>
     </>
   );

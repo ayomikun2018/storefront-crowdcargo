@@ -28,7 +28,6 @@ const Layout: FC<LayoutProps> = ({ children }) => {
               <CartSidebar />
             </div>
           </div>
-          
         </div>
       </SidebarProvider>
 

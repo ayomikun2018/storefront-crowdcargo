@@ -1,4 +1,4 @@
-import CheckoutPage from "@/app/(site)/checkout/_page/checkout-page";
+import CheckoutPage from "@/components/(pages)/checkout/checkout-page";
 
 export const metadata = { title: "Checkout" };
 

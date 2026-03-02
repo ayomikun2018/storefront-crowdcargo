@@ -72,7 +72,7 @@ const ProductDetailsPage: FC<ProductDetailsPageProps> = () => {
         </div>
       </section>
       <ScrollArea className="px-4 max-h-[calc(100vh-140px)]  relative">
-        <div className="space-y-4">
+        <div className="space-y-3">
           <div>
             <ProductDetailsMobileCarousel
               images={Array(3)
@@ -82,12 +82,12 @@ const ProductDetailsPage: FC<ProductDetailsPageProps> = () => {
             />
           </div>
 
-          <hr className="border border-muted" />
-
-          <Button className="text-gray-700 rounded-full w-full border border-gray-500 bg-gray-200 px-2 py-1">
-            <EyeIcon className="size-4" />
-            <span className="text-sm">View Size Chart</span>
-          </Button>
+          {!productData?.outOfStock && (
+            <Button className="text-gray-700 rounded-full w-full border border-gray-500 bg-gray-200  ">
+              <EyeIcon className="size-4" />
+              <span className="text-sm">View Size Chart</span>
+            </Button>
+          )}
 
           <div
             className={`grid grid-cols-4 ${
@@ -114,7 +114,7 @@ const ProductDetailsPage: FC<ProductDetailsPageProps> = () => {
           <div className="flex items-center gap-3">
             <div className="flex-1">
               <Select>
-                <SelectTrigger className="p-2 rounded-lg border !h-10 w-full">
+                <SelectTrigger className="p-2 rounded-2xl border border-blue-400  w-full bg-blue-50">
                   <SelectValue placeholder="Color" />
                 </SelectTrigger>
                 <SelectContent>
@@ -131,7 +131,7 @@ const ProductDetailsPage: FC<ProductDetailsPageProps> = () => {
 
             <div className="flex-1">
               <Select>
-                <SelectTrigger className="p-2 rounded-lg border !h-10 w-full">
+                <SelectTrigger className="p-2 rounded-2xl border border-blue-400 bg-blue-50 w-full">
                   <SelectValue placeholder="Size" />
                 </SelectTrigger>
                 <SelectContent>
@@ -149,12 +149,11 @@ const ProductDetailsPage: FC<ProductDetailsPageProps> = () => {
 
           <Button
             disabled={productData.outOfStock}
-            className={`flex gap-2 w-full h-12 font-semibold rounded-xl  ${
+            className={`flex gap-2 w-full h-[61px] font-semibold rounded-2xl  ${
               productData.outOfStock ? "cursor-not-allowed" : ""
             }`}
           >
-            <PlusCircleIcon className="size-5" />
-            {productData.outOfStock ? "Out of Stock" : "Add to Cart"}
+            Add to cart
           </Button>
           <Accordion
             type="multiple"
@@ -165,6 +164,7 @@ const ProductDetailsPage: FC<ProductDetailsPageProps> = () => {
             ]}
             className="w-full"
           >
+            <hr></hr>
             <AccordionItem value="product-information">
               <AccordionTrigger className="cursor-default hover:no-underline [&>svg]:hidden">
                 <span className="text-gray-600 font-semibold">
