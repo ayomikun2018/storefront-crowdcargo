@@ -17,7 +17,13 @@ const ViewedRecentlyContent = () => {
   // Logic dependent on searchParams must be inside here
   const isCollectionLanding =
     pathname === "/collection" && !searchParams.get("view");
-  const hardHiddenRoutes = ["/checkout", "/portal"];
+  const hardHiddenRoutes = [
+    "/checkout",
+    "/customer-review",
+    "/delivery-policy",
+    "/store-information",
+    "/portal",
+  ];
   const isHardHidden = hardHiddenRoutes.some((route) =>
     pathname.startsWith(route),
   );
